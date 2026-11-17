@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" style="background:transparent">
+  <defs>
+    <linearGradient id="gGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1B8600;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#145f00;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon: Stylized G monogram with upward arrow/growth symbol -->
+  <g transform="translate(12, 10)">
+    <!-- Hexagon base -->
+    <polygon points="34,2 57,15 57,41 34,54 11,41 11,15" fill="url(#gGrad)" />
+    <!-- Inner white G-shaped arc -->
+    <path d="M42,20 A13,13 0 1,0 43,34 L36,34 L36,29 L48,29 L48,34 A19,19 0 1,1 42,14 Z" fill="white" />
+  </g>
+  <!-- "Gaspar" text -->
+  <text x="82" y="48" font-family="Montserrat, Arial, sans-serif" font-weight="700" font-size="34" fill="#1B1B1B" letter-spacing="-0.5">Gaspar</text>
+  <!-- "Wealth" text -->
+  <text x="84" y="68" font-family="Montserrat, Arial, sans-serif" font-weight="400" font-size="15" fill="#1B8600" letter-spacing="5">WEALTH</text>
+  <!-- Thin accent line between texts -->
+  <line x1="84" y1="55" x2="260" y2="55" stroke="#1B8600" stroke-width="0.6" opacity="0.35"/>
+</svg>
