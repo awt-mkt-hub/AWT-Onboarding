@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foto Foto | Planejamento Patrimonial e Sucessório</title>
+<title>Foto Foto — Planejamento Patrimonial</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after {
   box-sizing: border-box;
@@ -16,14 +16,16 @@
 
 :root {
   --primary: #FF8C00;
-  --primary-dark: #0d1b2e;
-  --primary-mid: #1a2d47;
+  --primary-dark: #E67300;
+  --hero-bg: #0d1b2e;
   --white: #ffffff;
-  --off-white: #f8f9fa;
-  --light-gray: #f0f1f3;
-  --mid-gray: #6b7280;
-  --dark-text: #111827;
-  --border: #e5e7eb;
+  --off-white: #f8f8f8;
+  --light-gray: #f2f2f2;
+  --mid-gray: #888;
+  --dark: #111118;
+  --text-dark: #1a1a2e;
+  --text-body: #3a3a4a;
+  --border: #e0e0e0;
 }
 
 html {
@@ -31,32 +33,38 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
+  color: var(--text-dark);
   background: var(--white);
-  color: var(--dark-text);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* ===================== NAV ===================== */
+/* ===================== NAVIGATION ===================== */
 nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.25rem 2rem;
+  padding: 1.2rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(13, 27, 46, 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 140, 0, 0.15);
+  background: rgba(13, 27, 46, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 140, 0, 0.12);
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
+.nav-logo svg {
+  width: 160px;
+  height: auto;
+}
+
+/* Override SVG text color for nav (white context) */
+.nav-logo svg text[fill="#1A1A2E"] {
+  fill: #ffffff;
 }
 
 .nav-links {
@@ -70,7 +78,7 @@ nav {
   color: rgba(255,255,255,0.75);
   text-decoration: none;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.05em;
   transition: color 0.2s;
 }
@@ -82,48 +90,66 @@ nav {
 .nav-cta {
   background: var(--primary);
   color: #fff !important;
-  padding: 0.6rem 1.4rem;
-  border-radius: 4px;
+  padding: 0.5rem 1.3rem;
+  border-radius: 2rem;
   font-weight: 600 !important;
+  font-size: 0.82rem !important;
   letter-spacing: 0.03em !important;
+  transition: background 0.2s !important;
 }
 
 .nav-cta:hover {
-  background: #e67a00;
+  background: var(--primary-dark) !important;
   color: #fff !important;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
 }
 
 /* ===================== HERO ===================== */
 #hero {
   min-height: 100vh;
-  background: var(--primary-dark);
+  background: var(--hero-bg);
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 7rem 2rem 0;
-  position: relative;
   overflow: hidden;
+  padding: 0 2rem;
 }
 
-.hero-bg-shape {
+/* Background geometric accent */
+#hero::before {
+  content: '';
   position: absolute;
   top: -120px;
   right: -80px;
   width: 520px;
   height: 520px;
-  border-radius: 50%;
   background: radial-gradient(circle, rgba(255,140,0,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.hero-bg-line {
+#hero::after {
+  content: '';
   position: absolute;
-  bottom: 120px;
+  bottom: -60px;
   left: -40px;
-  width: 300px;
-  height: 300px;
-  border: 1px solid rgba(255,140,0,0.08);
-  border-radius: 50%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(255,140,0,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -132,44 +158,45 @@ nav {
   margin: 0 auto;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 380px;
   align-items: center;
-  padding-bottom: 4rem;
+  gap: 4rem;
+  padding-top: 80px;
 }
 
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-label {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--primary);
+  gap: 0.6rem;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.8rem;
 }
 
 .hero-label::before {
   content: '';
   display: inline-block;
-  width: 24px;
-  height: 1.5px;
+  width: 28px;
+  height: 1px;
   background: var(--primary);
 }
 
 .hero-headline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2.4rem, 4.5vw, 3.75rem);
-  font-weight: 600;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.08;
   color: var(--white);
-  line-height: 1.18;
-  max-width: 580px;
+  margin-bottom: 1.6rem;
+  max-width: 640px;
 }
 
 .hero-headline em {
@@ -177,19 +204,25 @@ nav {
   color: var(--primary);
 }
 
-.hero-sub {
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.7);
-  max-width: 480px;
-  line-height: 1.75;
-  font-weight: 300;
+.hero-headline .muted {
+  color: rgba(255,255,255,0.4);
+  font-weight: 400;
 }
 
-.hero-actions {
+.hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 2.4rem;
+}
+
+.hero-ctas {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 0.5rem;
+  gap: 1rem;
+  margin-bottom: 3rem;
 }
 
 .btn-primary {
@@ -199,17 +232,19 @@ nav {
   background: var(--primary);
   color: #fff;
   text-decoration: none;
-  padding: 0.9rem 2rem;
-  border-radius: 4px;
   font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
-  border: 2px solid var(--primary);
+  letter-spacing: 0.02em;
+  padding: 0.9rem 2rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
 }
 
 .btn-primary:hover {
-  background: #e67a00;
-  border-color: #e67a00;
+  background: var(--primary-dark);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -219,182 +254,169 @@ nav {
   background: transparent;
   color: rgba(255,255,255,0.85);
   text-decoration: none;
-  padding: 0.9rem 2rem;
-  border-radius: 4px;
   font-size: 0.9rem;
   font-weight: 500;
-  border: 1.5px solid rgba(255,255,255,0.25);
+  letter-spacing: 0.02em;
+  padding: 0.9rem 2rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255,255,255,0.6);
-  color: #fff;
-}
-
-/* Hero right — visual decorativo */
-.hero-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-card-visual {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,140,0,0.2);
-  border-radius: 8px;
-  padding: 2.5rem;
-  width: 100%;
-  max-width: 380px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-
-.hcv-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.hcv-badge {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  border-color: var(--primary);
   color: var(--primary);
-  background: rgba(255,140,0,0.1);
-  border: 1px solid rgba(255,140,0,0.25);
-  padding: 0.3rem 0.8rem;
-  border-radius: 2px;
 }
 
-.hcv-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 6px rgba(34,197,94,0.5);
-}
-
-.hcv-divider {
-  height: 1px;
-  background: rgba(255,255,255,0.08);
-}
-
-.hcv-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.hcv-item-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-}
-
-.hcv-item-value {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
-  color: rgba(255,255,255,0.9);
-  font-weight: 400;
-}
-
-.hcv-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.hcv-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.hcv-row-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
-  flex-shrink: 0;
-}
-
-.hcv-row-text {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.65);
-  font-weight: 400;
-}
-
-/* Hero disclaimer */
 .hero-disclaimer {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 1.5rem 0 2.5rem;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+  max-width: 580px;
+  padding-top: 1.5rem;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.hero-disclaimer p {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.65;
-  font-weight: 300;
-  max-width: 820px;
+/* Hero right — geometric visual */
+.hero-visual {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.hero-geo {
+  width: 320px;
+  height: 320px;
+  position: relative;
+}
+
+.geo-ring {
+  position: absolute;
+  border: 1px solid rgba(255,140,0,0.2);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.geo-ring-1 { width: 320px; height: 320px; }
+.geo-ring-2 { width: 240px; height: 240px; border-color: rgba(255,140,0,0.15); }
+.geo-ring-3 { width: 160px; height: 160px; border-color: rgba(255,140,0,0.3); }
+
+.geo-hexagon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.geo-label-top {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  white-space: nowrap;
+}
+
+.geo-label-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.geo-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.geo-dot-1 { top: 0; left: 50%; transform: translateX(-50%); }
+.geo-dot-2 { top: 50%; right: 0; transform: translateY(-50%); }
+.geo-dot-3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+.geo-dot-4 { top: 50%; left: 0; transform: translateY(-50%); }
 
 /* ===================== TRUST BAR ===================== */
 #trust-bar {
   background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 2rem;
+  border-top: 3px solid var(--primary);
+  padding: 2.4rem 2rem;
 }
 
 .trust-inner {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .trust-item {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .trust-icon {
-  width: 32px;
-  height: 32px;
-  background: rgba(255,140,0,0.1);
+  width: 36px;
+  height: 36px;
+  background: rgba(255,140,0,0.08);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  color: var(--primary);
+  font-size: 1rem;
 }
 
-.trust-icon svg {
-  width: 15px;
-  height: 15px;
+.trust-text strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.2rem;
 }
 
-.trust-text {
-  font-size: 0.82rem;
+.trust-text span {
+  font-size: 0.78rem;
+  color: var(--mid-gray);
+  line-height: 1.5;
+}
+
+/* ===================== SECTION SHARED ===================== */
+.section-label {
+  font-size: 0.72rem;
   font-weight: 500;
-  color: var(--dark-text);
-  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.trust-sep {
-  width: 1px;
-  height: 36px;
-  background: var(--border);
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--primary);
 }
 
 /* ===================== ESPECIALIDADES ===================== */
@@ -403,104 +425,99 @@ nav {
   padding: 6rem 2rem;
 }
 
-.section-inner {
+.especialidades-inner {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.section-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.especialidades-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 4rem;
 }
 
-.section-label::before {
-  content: '———';
-  color: var(--primary);
-  letter-spacing: 0;
-}
-
-.section-headline {
+.especialidades-headline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.9rem, 3.5vw, 2.75rem);
-  font-weight: 600;
-  color: var(--dark-text);
-  line-height: 1.25;
-  max-width: 560px;
-  margin-bottom: 3.5rem;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.15;
 }
 
-.section-headline em {
+.especialidades-headline em {
   font-style: italic;
   color: var(--primary);
 }
 
-/* Especialidades layout horizontal */
-.esp-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
+.especialidades-desc {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.75;
+  max-width: 420px;
+}
+
+/* Cards layout — horizontal strips, not generic grid */
+.especialidades-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.esp-card {
+.espec-card {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.8rem 2rem;
   background: var(--white);
-  padding: 2.5rem;
-  border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  transition: background 0.2s;
 }
 
-.esp-card:nth-child(even) {
-  border-right: none;
-}
-
-.esp-card:nth-last-child(-n+2) {
+.espec-card:last-child {
   border-bottom: none;
 }
 
-.esp-card:hover {
-  background: #fafafa;
+.espec-card:hover {
+  background: var(--off-white);
 }
 
-.esp-num {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--primary);
-  font-family: 'Inter', sans-serif;
-}
-
-.esp-title {
+.espec-number {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(255,140,0,0.2);
+  line-height: 1;
+}
+
+.espec-body h3 {
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--dark-text);
-  line-height: 1.3;
+  color: var(--text-dark);
+  margin-bottom: 0.3rem;
 }
 
-.esp-desc {
-  font-size: 0.88rem;
+.espec-body p {
+  font-size: 0.85rem;
   color: var(--mid-gray);
-  line-height: 1.7;
-  font-weight: 400;
+  line-height: 1.6;
 }
 
-.esp-line {
-  width: 32px;
-  height: 2px;
-  background: var(--primary);
-  margin-top: auto;
+.espec-pill {
+  background: rgba(255,140,0,0.1);
+  color: var(--primary-dark);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
 /* ===================== SOBRE ===================== */
@@ -509,379 +526,252 @@ nav {
   padding: 6rem 2rem;
 }
 
-.sobre-layout {
+.sobre-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: start;
 }
 
-.sobre-left {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.sobre-left {}
+
+.sobre-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
 }
 
-.sobre-body {
-  font-size: 1rem;
-  color: #374151;
-  line-height: 1.8;
-  font-weight: 400;
-}
-
-.sobre-valores {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-
-.valor-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--white);
-  border-left: 3px solid var(--primary);
-  border-radius: 0 4px 4px 0;
-}
-
-.valor-icon {
-  width: 20px;
-  height: 20px;
+.sobre-headline em {
+  font-style: italic;
   color: var(--primary);
-  flex-shrink: 0;
-  margin-top: 1px;
 }
 
-.valor-text {
+.sobre-text {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.sobre-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--primary);
   font-size: 0.88rem;
-  color: var(--dark-text);
-  line-height: 1.6;
-  font-weight: 500;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  margin-top: 1rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.sobre-cta:hover {
+  border-bottom-color: var(--primary);
 }
 
 .sobre-right {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
-.sobre-quote-block {
-  background: var(--primary-dark);
-  border-radius: 6px;
-  padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.sobre-quote-bg {
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  font-size: 8rem;
-  color: rgba(255,140,0,0.08);
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  pointer-events: none;
-  line-height: 1;
-}
-
-.sobre-quote {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-style: italic;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.65;
-  position: relative;
-  z-index: 1;
-}
-
-.sobre-quote-attr {
-  font-size: 0.75rem;
-  color: var(--primary);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-top: 1.25rem;
-  position: relative;
-  z-index: 1;
-}
-
-.sobre-pillars {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.pillar-card {
+.valor-card {
+  padding: 1.8rem;
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  border-left: 3px solid var(--primary);
+  border-radius: 0 8px 8px 0;
 }
 
-.pillar-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+.valor-card h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--primary);
+  margin-bottom: 0.5rem;
 }
 
-.pillar-value {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
-  color: var(--dark-text);
-  font-weight: 600;
+.valor-card p {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.65;
 }
 
-/* ===================== PROCESSO ===================== */
-#processo {
+/* ===================== PLANEJAMENTO ===================== */
+#planejamento {
   background: var(--white);
   padding: 6rem 2rem;
 }
 
-.processo-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 1rem;
-  max-width: 760px;
+.plan-inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.pstep {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--border);
-  align-items: flex-start;
+.plan-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
 }
 
-.pstep:last-child {
-  border-bottom: none;
-}
-
-.pstep-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  font-weight: 400;
-  color: rgba(255,140,0,0.2);
-  line-height: 1;
-  flex-shrink: 0;
-  width: 60px;
-  text-align: right;
-}
-
-.pstep-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding-top: 0.4rem;
-}
-
-.pstep-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--dark-text);
-}
-
-.pstep-desc {
-  font-size: 0.88rem;
-  color: var(--mid-gray);
-  line-height: 1.7;
-}
-
-/* Processo layout dois col */
-.processo-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.processo-right-visual {
-  position: sticky;
-  top: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.prv-box {
-  background: var(--primary-dark);
-  border-radius: 6px;
-  padding: 2.5rem;
-  color: var(--white);
-}
-
-.prv-box-label {
-  font-size: 0.65rem;
+.plan-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.plan-headline em {
+  font-style: italic;
   color: var(--primary);
-  margin-bottom: 1rem;
 }
 
-.prv-box-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.85);
-}
-
-.prv-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
-}
-
-.prv-tag {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--primary);
-  background: rgba(255,140,0,0.1);
-  border: 1px solid rgba(255,140,0,0.2);
-  padding: 0.3rem 0.75rem;
-  border-radius: 2px;
-}
-
-.prv-awt {
-  background: var(--light-gray);
-  border-radius: 6px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.prv-awt-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.plan-sub {
+  font-size: 0.95rem;
   color: var(--mid-gray);
-}
-
-.prv-awt-text {
-  font-size: 0.82rem;
-  color: #374151;
+  max-width: 480px;
+  margin: 0 auto;
   line-height: 1.65;
+}
+
+.plan-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.plan-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(12.5% + 20px);
+  right: calc(12.5% + 20px);
+  height: 1px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.plan-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.step-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1.2rem;
+}
+
+.plan-step h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.4rem;
+}
+
+.plan-step p {
+  font-size: 0.8rem;
+  color: var(--mid-gray);
+  line-height: 1.6;
 }
 
 /* ===================== CTA FINAL ===================== */
 #cta-final {
-  background: var(--primary-dark);
-  padding: 6rem 2rem;
+  background: var(--hero-bg);
+  padding: 7rem 2rem;
   position: relative;
   overflow: hidden;
 }
 
-.cta-bg-shape {
+#cta-final::before {
+  content: '';
   position: absolute;
   top: -100px;
-  right: -100px;
+  right: -60px;
   width: 400px;
   height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,140,0,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,140,0,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
 
-.cta-bg-shape2 {
-  position: absolute;
-  bottom: -80px;
-  left: -60px;
-  width: 300px;
-  height: 300px;
-  border: 1px solid rgba(255,140,0,0.06);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.cta-inner {
-  max-width: 760px;
+.cta-final-inner {
+  max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-.cta-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.cta-label::before,
-.cta-label::after {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1.5px;
-  background: var(--primary);
-}
-
-.cta-headline {
+.cta-final-headline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
   color: var(--white);
-  line-height: 1.2;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
 }
 
-.cta-headline em {
+.cta-final-headline em {
   font-style: italic;
   color: var(--primary);
 }
 
-.cta-sub {
+.cta-final-sub {
   font-size: 1rem;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.75;
-  font-weight: 300;
-  max-width: 540px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
 }
 
-.cta-actions {
+.cta-final-btns {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 1rem;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-bottom: 3rem;
 }
 
-.btn-wa {
+.btn-whatsapp {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: #25D366;
+  background: var(--primary);
   color: #fff;
   text-decoration: none;
-  padding: 1rem 2.25rem;
-  border-radius: 4px;
   font-size: 0.95rem;
   font-weight: 600;
+  padding: 1rem 2.2rem;
+  border-radius: 2rem;
+  transition: background 0.2s, transform 0.15s;
 }
 
-.btn-wa:hover {
-  background: #1db954;
+.btn-whatsapp:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
 }
 
 .btn-email {
@@ -891,23 +781,34 @@ nav {
   background: transparent;
   color: rgba(255,255,255,0.8);
   text-decoration: none;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  border: 1.5px solid rgba(255,255,255,0.2);
+  padding: 1rem 2.2rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: border-color 0.2s, color 0.2s;
 }
 
 .btn-email:hover {
-  border-color: rgba(255,255,255,0.5);
-  color: #fff;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.cta-disclaimer {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.65;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 /* ===================== FOOTER ===================== */
 footer {
-  background: #080f1a;
+  background: #080e18;
   padding: 4rem 2rem 2rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.5);
 }
 
 .footer-inner {
@@ -917,185 +818,189 @@ footer {
 
 .footer-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 2rem;
 }
 
-.footer-brand p {
-  font-size: 0.85rem;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.5);
-  margin-top: 1.25rem;
-  max-width: 340px;
+.footer-brand {}
+
+.footer-logo-wrap {
+  margin-bottom: 1rem;
 }
 
-.footer-col-label {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.footer-tagline {
+  font-size: 0.82rem;
   color: rgba(255,255,255,0.35);
-  margin-bottom: 1.25rem;
+  line-height: 1.65;
+  max-width: 260px;
 }
 
-.footer-nav {
+.footer-col h5 {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.2rem;
+}
+
+.footer-col ul {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
 }
 
-.footer-nav a {
-  color: rgba(255,255,255,0.55);
+.footer-col ul li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-col ul li a {
+  color: rgba(255,255,255,0.4);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 400;
+  font-size: 0.82rem;
+  transition: color 0.2s;
 }
 
-.footer-nav a:hover {
+.footer-col ul li a:hover {
   color: var(--primary);
 }
 
 .footer-contact-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.footer-contact-item span {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 0.6rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.5;
 }
 
 .footer-contact-item a {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.4);
   text-decoration: none;
+  font-size: 0.82rem;
+  transition: color 0.2s;
 }
 
 .footer-contact-item a:hover {
   color: var(--primary);
 }
 
-.footer-disclaimer {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 4px;
-  padding: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.footer-disclaimer p {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.45);
-  line-height: 1.7;
-  font-weight: 300;
-}
-
 .footer-bottom {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.footer-bottom-text {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.3);
-}
-
-.footer-awt {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.footer-disclaimer {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.3);
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  line-height: 1.65;
+  max-width: 700px;
 }
 
-.footer-awt-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--primary);
+.footer-copy {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.2);
+  white-space: nowrap;
 }
 
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 900px) {
+/* ===================== MOBILE NAV ===================== */
+@media (max-width: 768px) {
   .nav-links {
     display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(13,27,46,0.98);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(255,140,0,0.15);
+    z-index: 99;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+
+  .nav-toggle {
+    display: flex;
   }
 
   .hero-inner {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
-  .hero-right {
-    justify-content: flex-start;
-  }
-
-  .hero-card-visual {
-    max-width: 100%;
-  }
-
-  .esp-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .esp-card {
-    border-right: none;
-  }
-
-  .esp-card:nth-last-child(-n+2) {
-    border-bottom: 1px solid var(--border);
-  }
-
-  .esp-card:last-child {
-    border-bottom: none;
-  }
-
-  .sobre-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .processo-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .processo-right-visual {
-    position: static;
-  }
-
-  .footer-top {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .footer-brand p {
-    max-width: 100%;
-  }
-
-  .trust-sep {
+  .hero-visual {
     display: none;
   }
 
+  .especialidades-header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .espec-card {
+    grid-template-columns: 50px 1fr;
+    gap: 1rem;
+  }
+
+  .espec-pill {
+    display: none;
+  }
+
+  .sobre-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .plan-steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .plan-steps::before {
+    display: none;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+  }
+
   .trust-inner {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 }
 
-@media (max-width: 600px) {
-  #hero {
-    padding: 6rem 1.25rem 0;
+@media (max-width: 480px) {
+  .plan-steps {
+    grid-template-columns: 1fr;
   }
 
-  .hero-actions {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-ctas {
     flex-direction: column;
   }
 
@@ -1104,32 +1009,19 @@ footer {
     justify-content: center;
   }
 
-  .sobre-pillars {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-actions {
+  .cta-final-btns {
     flex-direction: column;
     align-items: center;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav {
-    padding: 1rem 1.25rem;
   }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ===================== NAVIGATION ===================== -->
 <nav>
-  <div class="nav-logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" width="160" height="45">
+  <a href="#hero" class="nav-logo" aria-label="Foto Foto — Voltar ao topo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" width="160" height="45" aria-hidden="true">
       <defs>
         <linearGradient id="iconGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
@@ -1137,381 +1029,337 @@ footer {
         </linearGradient>
       </defs>
       <g transform="translate(10, 8)">
-        <polygon points="37,4 63,4 74,22.5 63,41 37,41 26,22.5" fill="url(#iconGradNav)" />
-        <rect x="35" y="13" width="18" height="3.5" rx="1.5" fill="#ffffff" />
-        <rect x="35" y="13" width="3.5" height="19" rx="1.5" fill="#ffffff" />
-        <rect x="35" y="22" width="13" height="3.5" rx="1.5" fill="#ffffff" />
-        <circle cx="58" cy="29" r="2.5" fill="#ffffff" opacity="0.85" />
+        <polygon points="37,4 59,16 59,42 37,54 15,42 15,16" fill="url(#iconGradNav)" />
+        <rect x="26" y="20" width="22" height="4" fill="white" rx="1"/>
+        <rect x="26" y="27" width="16" height="4" fill="white" rx="1"/>
+        <rect x="26" y="20" width="4" height="18" fill="white" rx="1"/>
       </g>
-      <line x1="94" y1="18" x2="94" y2="72" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
-      <text x="108" y="46" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff" letter-spacing="1.5">Foto</text>
-      <text x="109" y="68" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="400" fill="#FF8C00" letter-spacing="5">FOTO</text>
-      <rect x="109" y="73" width="42" height="2" rx="1" fill="#FF8C00" opacity="0.4" />
+      <line x1="82" y1="18" x2="82" y2="72" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+      <text x="96" y="48" font-family="'Montserrat', 'Arial', sans-serif" font-size="38" font-weight="700" fill="#ffffff" letter-spacing="1">Foto</text>
+      <text x="97" y="67" font-family="'Montserrat', 'Arial', sans-serif" font-size="13" font-weight="400" fill="#FF8C00" letter-spacing="5">FOTO</text>
+      <circle cx="162" cy="63" r="2.5" fill="#FF8C00" opacity="0.7"/>
     </svg>
-  </div>
-  <ul class="nav-links">
+  </a>
+  <ul class="nav-links" id="navMenu">
     <li><a href="#especialidades">Especialidades</a></li>
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#processo">Como trabalhamos</a></li>
-    <li><a href="https://wa.me/5511989667904" class="nav-cta">Agende uma conversa</a></li>
+    <li><a href="#planejamento">Planejamento</a></li>
+    <li><a href="https://wa.me/5511989667904" class="nav-cta" target="_blank" rel="noopener">Agende uma conversa</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
+<!-- ===================== HERO ===================== -->
 <section id="hero">
-  <div class="hero-bg-shape"></div>
-  <div class="hero-bg-line"></div>
-
   <div class="hero-inner">
-    <div class="hero-left">
-      <span class="hero-label">Planejamento Patrimonial e Sucessório</span>
-
+    <div class="hero-content">
+      <span class="hero-label">Multi Family Office Independente</span>
       <h1 class="hero-headline">
-        Estruture o que você<br>
-        construiu para <em>durar</em><br>
-        além de você.
+        Estruture o futuro<br>
+        do seu <em>patrimônio</em><br>
+        <span class="muted">com quem entende.</span>
       </h1>
-
       <p class="hero-sub">
-        A Foto Foto organiza, planeja e estrutura o seu patrimônio com uma única estratégia de planejamento — clara, independente e construída para o longo prazo.
+        efeito — Planejamos, organizamos e acompanhamos o seu patrimônio familiar com método e independência.
       </p>
-
-      <div class="hero-actions">
-        <a href="https://wa.me/5511989667904" class="btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.478 2 2 6.478 2 12.004c0 1.76.459 3.414 1.263 4.853L2 22l5.299-1.24A9.994 9.994 0 0 0 12.004 22C17.527 22 22 17.527 22 12.004 22 6.478 17.527 2 12.004 2zm0 18.085a8.064 8.064 0 0 1-4.111-1.126l-.295-.176-3.145.736.773-3.072-.193-.313A8.088 8.088 0 0 1 3.916 12.004c0-4.457 3.627-8.084 8.088-8.084 4.457 0 8.084 3.627 8.084 8.084 0 4.46-3.627 8.081-8.084 8.081z"/></svg>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5511989667904" class="btn-primary" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.004 1.44 5.701L0 24l6.482-1.405A11.941 11.941 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.819 9.819 0 01-5.001-1.368l-.359-.214-3.72.806.845-3.63-.234-.372A9.783 9.783 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.429 0 9.818 4.388 9.818 9.818 0 5.43-4.389 9.818-9.818 9.818z" fill="currentColor"/></svg>
           Converse sobre seu planejamento
         </a>
         <a href="#especialidades" class="btn-secondary">
           Conheça nossa abordagem
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
+      <p class="hero-disclaimer">
+        Foto Foto integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.
+      </p>
     </div>
-
-    <div class="hero-right">
-      <div class="hero-card-visual">
-        <div class="hcv-top">
-          <span class="hcv-badge">Multi Family Office</span>
-          <span class="hcv-dot"></span>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-geo">
+        <div class="geo-ring geo-ring-1"></div>
+        <div class="geo-ring geo-ring-2"></div>
+        <div class="geo-ring geo-ring-3"></div>
+        <div class="geo-hexagon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" width="200" height="56">
+            <defs>
+              <linearGradient id="iconGradHero" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#E67300;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(10, 8)">
+              <polygon points="37,4 59,16 59,42 37,54 15,42 15,16" fill="url(#iconGradHero)" />
+              <rect x="26" y="20" width="22" height="4" fill="white" rx="1"/>
+              <rect x="26" y="27" width="16" height="4" fill="white" rx="1"/>
+              <rect x="26" y="20" width="4" height="18" fill="white" rx="1"/>
+            </g>
+            <line x1="82" y1="18" x2="82" y2="72" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+            <text x="96" y="48" font-family="'Montserrat', 'Arial', sans-serif" font-size="38" font-weight="700" fill="#ffffff" letter-spacing="1">Foto</text>
+            <text x="97" y="67" font-family="'Montserrat', 'Arial', sans-serif" font-size="13" font-weight="400" fill="#FF8C00" letter-spacing="5">FOTO</text>
+            <circle cx="162" cy="63" r="2.5" fill="#FF8C00" opacity="0.7"/>
+          </svg>
         </div>
-        <div class="hcv-divider"></div>
-        <div class="hcv-item">
-          <span class="hcv-item-label">Especialidade principal</span>
-          <span class="hcv-item-value">Planejamento Sucessório</span>
-        </div>
-        <div class="hcv-divider"></div>
-        <div class="hcv-list">
-          <div class="hcv-row">
-            <span class="hcv-row-dot"></span>
-            <span class="hcv-row-text">100% independente de bancos e corretoras</span>
-          </div>
-          <div class="hcv-row">
-            <span class="hcv-row-dot"></span>
-            <span class="hcv-row-text">Uma única estratégia de planejamento para toda a família</span>
-          </div>
-          <div class="hcv-row">
-            <span class="hcv-row-dot"></span>
-            <span class="hcv-row-text">Sem conflito de interesses</span>
-          </div>
-          <div class="hcv-row">
-            <span class="hcv-row-dot"></span>
-            <span class="hcv-row-text">Planejamento estruturado para o longo prazo</span>
-          </div>
-        </div>
+        <div class="geo-dot geo-dot-1"></div>
+        <div class="geo-dot geo-dot-2"></div>
+        <div class="geo-dot geo-dot-3"></div>
+        <div class="geo-dot geo-dot-4"></div>
+        <span class="geo-label-top">Planejamento Patrimonial</span>
+        <span class="geo-label-bottom">Desde o primeiro passo</span>
       </div>
     </div>
-  </div>
-
-  <div class="hero-disclaimer">
-    <p>Foto Foto integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.</p>
   </div>
 </section>
 
-<!-- TRUST BAR -->
+<!-- ===================== TRUST BAR ===================== -->
 <section id="trust-bar">
   <div class="trust-inner">
     <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF8C00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <span class="trust-text">Independente de instituições financeiras</span>
+      <div class="trust-text">
+        <strong>Independência total</strong>
+        <span>Sem conflito de interesses. Seu patrimônio, suas decisões.</span>
+      </div>
     </div>
-    <div class="trust-sep"></div>
     <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF8C00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <span class="trust-text">Planejamento construído para cada família</span>
+      <div class="trust-text">
+        <strong>Uma única estratégia de planejamento</strong>
+        <span>Familiar, sucessória e patrimonial integradas sob um único olhar.</span>
+      </div>
     </div>
-    <div class="trust-sep"></div>
     <div class="trust-item">
-      <div class="trust-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#FF8C00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
+      <div class="trust-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <span class="trust-text">Ecossistema AWT Group — CVM registrado</span>
+      <div class="trust-text">
+        <strong>Vinculado ao AWT Group</strong>
+        <span>Estrutura regulada e supervisão pela CVM para sua segurança.</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ESPECIALIDADES -->
+<!-- ===================== ESPECIALIDADES ===================== -->
 <section id="especialidades">
-  <div class="section-inner">
-    <div class="section-label">Especialidades</div>
-    <h2 class="section-headline">
-      O que organizamos<br>para <em>você e sua família</em>
-    </h2>
-
-    <div class="esp-layout">
-      <div class="esp-card">
-        <span class="esp-num">01</span>
-        <h3 class="esp-title">Planejamento Sucessório</h3>
-        <p class="esp-desc">Estruturamos a transmissão do seu patrimônio de forma clara, eficiente e alinhada à sua visão de legado — minimizando conflitos e simplificando o processo para toda a família.</p>
-        <div class="esp-line"></div>
+  <div class="especialidades-inner">
+    <div class="especialidades-header">
+      <div>
+        <span class="section-label">Especialidades</span>
+        <h2 class="especialidades-headline">
+          Expertise onde<br><em>seu patrimônio</em><br>mais precisa.
+        </h2>
       </div>
+      <p class="especialidades-desc">
+        Organizamos cada dimensão do seu patrimônio com método e profundidade. Nossa atuação começa onde a complexidade familiar e patrimonial exige mais do que uma visão genérica.
+      </p>
+    </div>
 
-      <div class="esp-card">
-        <span class="esp-num">02</span>
-        <h3 class="esp-title">Estruturação Patrimonial</h3>
-        <p class="esp-desc">Mapeamos e consolidamos todos os seus bens, obrigações e fluxos em uma visão única e integrada — para que você tenha clareza total sobre o que possui e o que constrói.</p>
-        <div class="esp-line"></div>
+    <div class="especialidades-cards">
+      <div class="espec-card">
+        <div class="espec-number">01</div>
+        <div class="espec-body">
+          <h3>Planejamento Sucessório</h3>
+          <p>Estruturamos a transmissão do patrimônio familiar de forma organizada, mapeando herdeiros, bens e passivos para garantir continuidade e redução de conflitos.</p>
+        </div>
+        <span class="espec-pill">Sucessório</span>
       </div>
-
-      <div class="esp-card">
-        <span class="esp-num">03</span>
-        <h3 class="esp-title">Governança Familiar</h3>
-        <p class="esp-desc">Conectamos as gerações por meio de processos e acordos bem definidos, construindo regras claras de convivência e decisão sobre o patrimônio familiar.</p>
-        <div class="esp-line"></div>
+      <div class="espec-card">
+        <div class="espec-number">02</div>
+        <div class="espec-body">
+          <h3>Estruturação Patrimonial</h3>
+          <p>Mapeamos e consolidamos os ativos familiares em uma visão única, simplificando a complexidade e dando clareza sobre o todo.</p>
+        </div>
+        <span class="espec-pill">Patrimonial</span>
       </div>
-
-      <div class="esp-card">
-        <span class="esp-num">04</span>
-        <h3 class="esp-title">Planejamento de Longo Prazo</h3>
-        <p class="esp-desc">Acompanhamos a evolução do seu planejamento ao longo do tempo, revisando e ajustando a estratégia conforme sua família cresce e o contexto se transforma.</p>
-        <div class="esp-line"></div>
+      <div class="espec-card">
+        <div class="espec-number">03</div>
+        <div class="espec-body">
+          <h3>Governança Familiar</h3>
+          <p>Construímos acordos e estruturas que conectam gerações, alinham expectativas e preservam o patrimônio ao longo do tempo.</p>
+        </div>
+        <span class="espec-pill">Governança</span>
+      </div>
+      <div class="espec-card">
+        <div class="espec-number">04</div>
+        <div class="espec-body">
+          <h3>Acompanhamento Contínuo</h3>
+          <p>Sua vida muda. Seu planejamento também deve mudar. Acompanhamos cada fase com presença ativa e visão de longo prazo.</p>
+        </div>
+        <span class="espec-pill">Continuidade</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOBRE -->
+<!-- ===================== SOBRE ===================== -->
 <section id="sobre">
-  <div class="section-inner">
-    <div class="sobre-layout">
-      <div class="sobre-left">
-        <div class="section-label">Sobre a Foto Foto</div>
-        <h2 class="section-headline" style="margin-bottom:0;">
-          Uma visão clara.<br><em>Um propósito duradouro.</em>
-        </h2>
+  <div class="sobre-inner">
+    <div class="sobre-left">
+      <span class="section-label">Sobre o Escritório</span>
+      <h2 class="sobre-headline">
+        Mais do que um escritório —<br>uma <em>parceria</em> de longa data.
+      </h2>
+      <p class="sobre-text">
+        visao — A Foto Foto nasceu da convicção de que famílias com patrimônio relevante merecem um planejamento à altura de sua complexidade. Organizamos, planejamos e acompanhamos cada decisão com método, transparência e independência.
+      </p>
+      <p class="sobre-text">
+        Nossa missão é simples: estruturar o que parece complexo, conectar o presente ao futuro e caminhar ao lado de cada família em cada etapa.
+      </p>
+      <a href="https://wa.me/5511989667904" class="sobre-cta" target="_blank" rel="noopener">
+        Organize seu patrimônio
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
 
-        <p class="sobre-body">
-          A Foto Foto nasceu de uma convicção simples: patrimônios bem organizados constroem legados. Atuamos como parceiros de longo prazo de famílias que buscam mais do que soluções pontuais — buscam um planejamento que respeite sua história, seus valores e o que desejam deixar para as próximas gerações.
-        </p>
-
-        <p class="sobre-body">
-          Nossa abordagem é independente, personalizada e orientada ao que realmente importa: estruturar, mapear e acompanhar cada família com a atenção que sua situação exige.
-        </p>
-
-        <div class="sobre-valores">
-          <div class="valor-item">
-            <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            <span class="valor-text">Visão de longo prazo — planejamos para gerações, não para trimestres</span>
-          </div>
-          <div class="valor-item">
-            <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            <span class="valor-text">Independência total — sem vínculo com produtos ou instituições</span>
-          </div>
-          <div class="valor-item">
-            <svg class="valor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-            </svg>
-            <span class="valor-text">Excelência e clareza — simplificamos o complexo sem perder a profundidade</span>
-          </div>
-        </div>
+    <div class="sobre-right">
+      <div class="valor-card">
+        <h4>Visão</h4>
+        <p>visao — Ser a referência em planejamento patrimonial para famílias que constroem legados relevantes e duradouros no Brasil.</p>
       </div>
-
-      <div class="sobre-right">
-        <div class="sobre-quote-block">
-          <span class="sobre-quote-bg">"</span>
-          <p class="sobre-quote">
-            "efeito" — a Foto Foto acredita que um planejamento bem estruturado transforma não apenas patrimônios, mas a relação de famílias inteiras com o que construíram.
-          </p>
-          <p class="sobre-quote-attr">— Visão Foto Foto</p>
-        </div>
-
-        <div class="sobre-pillars">
-          <div class="pillar-card">
-            <span class="pillar-label">Missão</span>
-            <span class="pillar-value">Organizar para liberar</span>
-          </div>
-          <div class="pillar-card">
-            <span class="pillar-label">Valores</span>
-            <span class="pillar-value">Clareza e independência</span>
-          </div>
-          <div class="pillar-card">
-            <span class="pillar-label">Público</span>
-            <span class="pillar-value">Famílias com complexidade patrimonial</span>
-          </div>
-          <div class="pillar-card">
-            <span class="pillar-label">Abordagem</span>
-            <span class="pillar-value">Uma única estratégia de planejamento</span>
-          </div>
-        </div>
+      <div class="valor-card">
+        <h4>Missão</h4>
+        <p>visao — Organizar, estruturar e acompanhar o patrimônio familiar com independência, profundidade e comprometimento de longo prazo.</p>
+      </div>
+      <div class="valor-card">
+        <h4>Valores</h4>
+        <p>visao — Independência, transparência, integridade e foco total no melhor interesse de cada família que atendemos.</p>
+      </div>
+      <div class="valor-card">
+        <h4>Diferenciais</h4>
+        <p>sada — Planejamento personalizado, visão integrada do patrimônio, estrutura vinculada ao AWT Group e profissionais com trajetória sólida.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESSO -->
-<section id="processo">
-  <div class="section-inner">
-    <div class="processo-layout">
-      <div class="processo-left">
-        <div class="section-label">Como trabalhamos</div>
-        <h2 class="section-headline" style="margin-bottom:2rem;">
-          Um processo <em>estruturado</em><br>do começo ao legado.
-        </h2>
+<!-- ===================== PLANEJAMENTO ===================== -->
+<section id="planejamento">
+  <div class="plan-inner">
+    <div class="plan-header">
+      <span class="section-label" style="justify-content:center;">Nossa abordagem</span>
+      <h2 class="plan-headline">
+        Uma única estratégia de <em>planejamento</em>
+      </h2>
+      <p class="plan-sub">
+        Do diagnóstico à continuidade, cada etapa é conduzida com presença, clareza e método.
+      </p>
+    </div>
 
-        <div class="processo-steps">
-          <div class="pstep">
-            <span class="pstep-num">01</span>
-            <div class="pstep-content">
-              <h3 class="pstep-title">Escuta e mapeamento</h3>
-              <p class="pstep-desc">Começamos por entender sua família — seus objetivos, estrutura patrimonial atual, relacionamentos e o que deseja construir. Sem pressa, sem formulários genéricos.</p>
-            </div>
-          </div>
-
-          <div class="pstep">
-            <span class="pstep-num">02</span>
-            <div class="pstep-content">
-              <h3 class="pstep-title">Diagnóstico patrimonial</h3>
-              <p class="pstep-desc">Consolidamos a visão completa do que você possui — bens, fluxos, obrigações e oportunidades de organização. Uma fotografia fiel e abrangente.</p>
-            </div>
-          </div>
-
-          <div class="pstep">
-            <span class="pstep-num">03</span>
-            <div class="pstep-content">
-              <h3 class="pstep-title">Estratégia de planejamento</h3>
-              <p class="pstep-desc">Construímos uma única estratégia de planejamento, coordenando aspectos sucessórios, tributários e familiares em um plano coeso e compreensível.</p>
-            </div>
-          </div>
-
-          <div class="pstep">
-            <span class="pstep-num">04</span>
-            <div class="pstep-content">
-              <h3 class="pstep-title">Acompanhamento contínuo</h3>
-              <p class="pstep-desc">Permanecemos ao lado da família ao longo do tempo — revisando, ajustando e simplificando o planejamento conforme a vida evolui.</p>
-            </div>
-          </div>
-        </div>
+    <div class="plan-steps">
+      <div class="plan-step">
+        <div class="step-num">1</div>
+        <h4>Diagnóstico</h4>
+        <p>Mapeamos o patrimônio, as pessoas e os objetivos familiares com profundidade.</p>
       </div>
-
-      <div class="processo-right-visual">
-        <div class="prv-box">
-          <p class="prv-box-label">Nossa abordagem</p>
-          <p class="prv-box-text">
-            Acreditamos que clareza é a base de qualquer planejamento duradouro. Por isso, estruturamos cada etapa de forma que você entenda — e confie — em cada decisão tomada.
-          </p>
-          <div class="prv-tags">
-            <span class="prv-tag">Sucessório</span>
-            <span class="prv-tag">Patrimonial</span>
-            <span class="prv-tag">Familiar</span>
-            <span class="prv-tag">Independente</span>
-            <span class="prv-tag">Longo prazo</span>
-          </div>
-        </div>
-
-        <div class="prv-awt">
-          <p class="prv-awt-label">Ecossistema AWT Group</p>
-          <p class="prv-awt-text">
-            A Foto Foto integra o ecossistema AWT Group, o que nos permite oferecer acesso a uma rede especializada de profissionais e serviços complementares — tudo dentro de uma estrutura regulada e transparente.
-          </p>
-        </div>
+      <div class="plan-step">
+        <div class="step-num">2</div>
+        <h4>Estruturação</h4>
+        <p>Organizamos os bens, as relações e os fluxos em uma visão consolidada e clara.</p>
+      </div>
+      <div class="plan-step">
+        <div class="step-num">3</div>
+        <h4>Planejamento</h4>
+        <p>Construímos uma estratégia singular, alinhada aos objetivos de cada família.</p>
+      </div>
+      <div class="plan-step">
+        <div class="step-num">4</div>
+        <h4>Acompanhamento</h4>
+        <p>Revisamos, ajustamos e acompanhamos cada fase com presença ativa.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
+<!-- ===================== CTA FINAL ===================== -->
 <section id="cta-final">
-  <div class="cta-bg-shape"></div>
-  <div class="cta-bg-shape2"></div>
-  <div class="cta-inner">
-    <span class="cta-label">Dê o próximo passo</span>
-    <h2 class="cta-headline">
-      Organize seu patrimônio.<br>
-      Construa um <em>legado de verdade.</em>
+  <div class="cta-final-inner">
+    <span class="section-label" style="justify-content:center; color:rgba(255,140,0,0.8);">Dê o próximo passo</span>
+    <h2 class="cta-final-headline">
+      Pronto para <em>estruturar</em><br>o que construiu?
     </h2>
-    <p class="cta-sub">
-      Uma conversa sem compromisso é o ponto de partida. Vamos entender sua situação e ver como podemos estruturar o planejamento certo para sua família.
+    <p class="cta-final-sub">
+      Converse com nosso time. Sem compromisso, sem pressa. Apenas uma conversa para entender se faz sentido caminharmos juntos.
     </p>
-    <div class="cta-actions">
-      <a href="https://wa.me/5511989667904" class="btn-wa">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.478 2 2 6.478 2 12.004c0 1.76.459 3.414 1.263 4.853L2 22l5.299-1.24A9.994 9.994 0 0 0 12.004 22C17.527 22 22 17.527 22 12.004 22 6.478 17.527 2 12.004 2zm0 18.085a8.064 8.064 0 0 1-4.111-1.126l-.295-.176-3.145.736.773-3.072-.193-.313A8.088 8.088 0 0 1 3.916 12.004c0-4.457 3.627-8.084 8.088-8.084 4.457 0 8.084 3.627 8.084 8.084 0 4.46-3.627 8.081-8.084 8.081z"/></svg>
+    <div class="cta-final-btns">
+      <a href="https://wa.me/5511989667904" class="btn-whatsapp" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.004 1.44 5.701L0 24l6.482-1.405A11.941 11.941 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.819 9.819 0 01-5.001-1.368l-.359-.214-3.72.806.845-3.63-.234-.372A9.783 9.783 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.429 0 9.818 4.388 9.818 9.818 0 5.43-4.389 9.818-9.818 9.818z" fill="currentColor"/></svg>
         Agende uma conversa
       </a>
       <a href="mailto:teste@gmail.com" class="btn-email">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-        Envie um e-mail
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Enviar e-mail
       </a>
     </div>
+    <p class="cta-disclaimer">
+      Foto Foto integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.
+    </p>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" width="160" height="45">
-          <defs>
-            <linearGradient id="iconGradFt" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#E67300;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          <g transform="translate(10, 8)">
-            <polygon points="37,4 63,4 74,22.5 63,41 37,41 26,22.5" fill="url(#iconGradFt)" />
-            <rect x="35" y="13" width="18" height="3.5" rx="1.5" fill="#ffffff" />
-            <rect x="35" y="13" width="3.5" height="19" rx="1.5" fill="#ffffff" />
-            <rect x="35" y="22" width="13" height="3.5" rx="1.5" fill="#ffffff" />
-            <circle cx="58" cy="29" r="2.5" fill="#ffffff" opacity="0.85" />
-          </g>
-          <line x1="94" y1="18" x2="94" y2="72" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round" opacity="0.35" />
-          <text x="108" y="46" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff" letter-spacing="1.5">Foto</text>
-          <text x="109" y="68" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="400" fill="#FF8C00" letter-spacing="5">FOTO</text>
-          <rect x="109" y="73" width="42" height="2" rx="1" fill="#FF8C00" opacity="0.4" />
-        </svg>
-        <p>Planejamento patrimonial e sucessório para famílias que constroem para durar. Independente, personalizado e orientado ao longo prazo.</p>
+        <div class="footer-logo-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" width="160" height="45" aria-label="Foto Foto">
+            <defs>
+              <linearGradient id="iconGradFt" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#E67300;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(10, 8)">
+              <polygon points="37,4 59,16 59,42 37,54 15,42 15,16" fill="url(#iconGradFt)" />
+              <rect x="26" y="20" width="22" height="4" fill="white" rx="1"/>
+              <rect x="26" y="27" width="16" height="4" fill="white" rx="1"/>
+              <rect x="26" y="20" width="4" height="18" fill="white" rx="1"/>
+            </g>
+            <line x1="82" y1="18" x2="82" y2="72" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+            <text x="96" y="48" font-family="'Montserrat', 'Arial', sans-serif" font-size="38" font-weight="700" fill="#ffffff" letter-spacing="1">Foto</text>
+            <text x="97" y="67" font-family="'Montserrat', 'Arial', sans-serif" font-size="13" font-weight="400" fill="#FF8C00" letter-spacing="5">FOTO</text>
+            <circle cx="162" cy="63" r="2.5" fill="#FF8C00" opacity="0.7"/>
+          </svg>
+        </div>
+        <p class="footer-tagline">Multi Family Office Independente. Organizamos, planejamos e acompanhamos o patrimônio das famílias que confiam em nosso trabalho.</p>
       </div>
 
-      <div>
-        <p class="footer-col-label">Navegação</p>
-        <ul class="footer-nav">
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
           <li><a href="#especialidades">Especialidades</a></li>
           <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#processo">Como trabalhamos</a></li>
-          <li><a href="https://wa.me/5511989667904">Agende uma conversa</a></li>
+          <li><a href="#planejamento">Planejamento</a></li>
+          <li><a href="#cta-final">Contato</a></li>
         </ul>
       </div>
 
-      <div>
-        <p class="footer-col-label">Contato</p>
+      <div class="footer-col">
+        <h5>Especialidades</h5>
+        <ul>
+          <li><a href="#especialidades">Planejamento Sucessório</a></li>
+          <li><a href="#especialidades">Estruturação Patrimonial</a></li>
+          <li><a href="#especialidades">Governança Familiar</a></li>
+          <li><a href="#especialidades">Acompanhamento Contínuo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contato</h5>
         <div class="footer-contact-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px;color:rgba(255,140,0,0.6)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.062.522 4.004 1.44 5.701L0 24l6.482-1.405A11.941 11.941 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.819 9.819 0 01-5.001-1.368l-.359-.214-3.72.806.845-3.63-.234-.372A9.783 9.783 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.429 0 9.818 4.388 9.818 9.818 0 5.43-4.389 9.818-9.818 9.818z" fill="currentColor"/></svg>
+          <a href="https://wa.me/5511989667904" target="_blank" rel="noopener">(11) 98966-7904</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0;margin-top:3px;color:rgba(255,140,0,0.6)"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="mailto:teste@gmail.com">teste@gmail.com
