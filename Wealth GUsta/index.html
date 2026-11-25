@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealth GUsta | Multi Family Office Independente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: #A02AFA;
+  --accent-light: #c06aff;
+  --hero-bg: #0d0a1a;
+  --dark-section: #0d0a1a;
+  --white: #ffffff;
+  --light-bg: #f8f7fb;
+  --mid-bg: #f2f0f8;
+  --text-dark: #111118;
+  --text-mid: #3a3650;
+  --text-muted: #7a7490;
+  --border-light: #e8e4f0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(13, 10, 26, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(160, 42, 250, 0.15);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo svg {
+  height: 42px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-light);
+}
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--white);
+  padding: 0.6rem 1.4rem;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-cta:hover {
+  background: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  background: var(--hero-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 8rem 2rem 6rem;
+  overflow: hidden;
+}
+
+.hero-bg-shape {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(160,42,250,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-bg-shape-2 {
+  position: absolute;
+  bottom: -100px;
+  left: -60px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(160,42,250,0.09) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent-light);
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+  font-weight: 900;
+  line-height: 1.08;
+  color: var(--white);
+  max-width: 780px;
+  margin-bottom: 1.8rem;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 2.8rem;
+  font-weight: 300;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--white);
+  padding: 0.9rem 2rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 24px rgba(160,42,250,0.35);
+}
+
+.btn-primary:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(160,42,250,0.45);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  padding: 0.9rem 2rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255,255,255,0.22);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+}
+
+.hero-disclaimer {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  padding: 1rem 1.4rem;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+  max-width: 760px;
+}
+
+/* TRUST BAR */
+#trust-bar {
+  background: var(--white);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 2.2rem 2rem;
+}
+
+.trust-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.trust-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(160,42,250,0.09);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.trust-text strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.01em;
+}
+
+.trust-text span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* SECTION LABELS */
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.section-label::before {
+  content: '——— ';
+}
+
+/* ESPECIALIDADES */
+#especialidades {
+  background: var(--white);
+  padding: 6rem 2rem;
+}
+
+.especialidades-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.especialidades-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  align-items: end;
+}
+
+.especialidades-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.12;
+}
+
+.especialidades-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.especialidades-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover {
+  border-color: rgba(160,42,250,0.3);
+  box-shadow: 0 8px 32px rgba(160,42,250,0.08);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card-number {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+  line-height: 1.25;
+}
+
+.card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+.card-tag {
+  background: rgba(160,42,250,0.07);
+  color: var(--accent);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* SOBRE */
+#sobre {
+  background: var(--light-bg);
+  padding: 6rem 2rem;
+}
+
+.sobre-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.sobre-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.15;
+  margin-bottom: 1.4rem;
+}
+
+.sobre-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.sobre-text {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+
+.valor-item {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 1.2rem;
+}
+
+.valor-item strong {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.valor-item span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.sobre-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.visual-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 1.8rem 2rem;
+}
+
+.visual-card-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.visual-card-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.visual-card-sub {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+  line-height: 1.6;
+}
+
+/* CONTATO */
+#contato {
+  background: var(--hero-bg);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contato-bg {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(160,42,250,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contato-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.contato-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+.contato-title em {
+  font-style: italic;
+  color: var(--accent-light);
+}
+
+.contato-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.contato-ctas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-whatsapp {
+  background: var(--accent);
+  color: var(--white);
+  padding: 1rem 2.2rem;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 24px rgba(160,42,250,0.4);
+}
+
+.btn-whatsapp:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(160,42,250,0.5);
+}
+
+.btn-email {
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  padding: 1rem 2.2rem;
+  border-radius: 100px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-email:hover {
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+}
+
+/* FOOTER */
+footer {
+  background: #07040f;
+  padding: 3rem 2rem 2rem;
+  border-top: 1px solid rgba(160,42,250,0.15);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 2rem;
+}
+
+.footer-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.footer-brand-desc {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.65;
+  max-width: 280px;
+}
+
+.footer-col-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1.2rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  font-size: 0.84rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent-light);
+}
+
+.footer-contact-item {
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.5rem;
+}
+
+.footer-disclaimer {
+  font-size: 0.74rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+  padding: 1.2rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.footer-copy {
+  font-size: 0.74rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-badge {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* DECORATIVE LINE */
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+
+  .hero-inner { padding: 0; }
+
+  .trust-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .especialidades-header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 1rem 1.2rem; }
+
+  #hero { padding: 7rem 1.2rem 4rem; }
+
+  .hero-headline { font-size: 2.4rem; }
+
+  .hero-ctas { flex-direction: column; }
+
+  .btn-primary, .btn-secondary { text-align: center; }
+
+  #especialidades, #sobre, #contato { padding: 4rem 1.2rem; }
+
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+
+  .valores-grid { grid-template-columns: 1fr; }
+
+  .contato-ctas { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVEGAÇÃO -->
+<nav>
+  <div class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><image href="data:image/png;base64,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" width="400" height="200" preserveAspectRatio="xMidYMid meet"/></svg>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5511989667904" class="nav-cta" target="_blank" rel="noopener">Agende uma conversa</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-bg-shape-2"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Multi Family Office Independente</p>
+    <h1 class="hero-headline">
+      BOOORAAA que agora vai — <em>organize</em> seu patrimônio com quem entende.
+    </h1>
+    <p class="hero-sub">
+      Planejamento patrimonial estruturado, planejado e acompanhado por profissionais independentes. Uma única estratégia de planejamento, do começo ao fim.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/5511989667904" class="btn-primary" target="_blank" rel="noopener">
+        Converse sobre seu planejamento
+      </a>
+      <a href="#especialidades" class="btn-secondary">Conheça nossas especialidades</a>
+    </div>
+    <div class="hero-disclaimer">
+      <strong style="color: rgba(255,255,255,0.65); display: block; margin-bottom: 0.3rem;">Informação de compliance</strong>
+      Wealth GUsta integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section id="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Independência total</strong>
+        <span>Sem conflito de interesses. Seu planejamento, seu interesse.</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Uma única estratégia</strong>
+        <span>Planejamento consolidado e integrado em todas as frentes.</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Vinculado à AWT Group</strong>
+        <span>Profissionais registrados e regulamentados perante a CVM.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades">
+  <div class="especialidades-inner">
+    <div class="especialidades-header">
+      <div>
+        <p class="section-label">Especialidades</p>
+        <h2 class="especialidades-title">
+          Organizamos o que mais<br><em>importa</em> para você.
+        </h2>
+      </div>
+      <p class="especialidades-desc">
+        Estruturamos, planejamos e acompanhamos cada aspecto do seu patrimônio com profundidade e visão de longo prazo — sem atalhos, sem conflitos.
+      </p>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <p class="card-number">01</p>
+        <h3 class="card-title">Planejamento Sucessório</h3>
+        <p class="card-desc">Mapeamos e estruturamos a transmissão do seu patrimônio de forma organizada, garantindo que sua história e legado sejam preservados da maneira que você deseja.</p>
+        <div class="card-tags">
+          <span class="card-tag">Sucessão Familiar</span>
+          <span class="card-tag">Holding</span>
+          <span class="card-tag">Testamento</span>
+        </div>
+      </div>
+      <div class="card">
+        <p class="card-number">02</p>
+        <h3 class="card-title">Previdência & Longo Prazo</h3>
+        <p class="card-desc">Construímos junto com você uma visão clara do futuro — planejando aposentadoria e continuidade com estratégia, disciplina e acompanhamento contínuo.</p>
+        <div class="card-tags">
+          <span class="card-tag">PGBL</span>
+          <span class="card-tag">VGBL</span>
+          <span class="card-tag">Planejamento Futuro</span>
+        </div>
+      </div>
+      <div class="card">
+        <p class="card-number">03</p>
+        <h3 class="card-title">Especialidade dsada</h3>
+        <p class="card-desc">Consolidamos e simplificamos as estruturas patrimoniais para que você tenha uma visão completa, clara e conectada de tudo que constrói.</p>
+        <div class="card-tags">
+          <span class="card-tag">Consolidação</span>
+          <span class="card-tag">Estruturação</span>
+        </div>
+      </div>
+      <div class="card">
+        <p class="card-number">04</p>
+        <h3 class="card-title">Especialidade dasdasd</h3>
+        <p class="card-desc">Acompanhamos de perto cada decisão relevante, conectando especialistas e simplificando a complexidade do planejamento patrimonial para nossos clientes.</p>
+        <div class="card-tags">
+          <span class="card-tag">Assessoria</span>
+          <span class="card-tag">Acompanhamento</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-inner">
+    <div>
+      <p class="section-label">Sobre o Escritório</p>
+      <h2 class="sobre-title">
+        Nossa <em>visão</em> e o que nos move.
+      </h2>
+      <p class="sobre-text">
+        A Wealth GUsta nasceu para simplificar o que parece complicado demais. Acreditamos que organizar o patrimônio é antes de tudo um ato de cuidado — com você, com sua família e com quem virá depois.
+      </p>
+      <p class="sobre-text">
+        Somos um escritório independente, sem amarras a produtos ou instituições. Nossa única lealdade é com quem nos confia o que há de mais valioso: o resultado do seu trabalho e o sonho do seu futuro.
+      </p>
+      <div class="valores-grid">
+        <div class="valor-item">
+          <strong>Missão</strong>
+          <span>asdasdjk — organizar com intenção e responsabilidade.</span>
+        </div>
+        <div class="valor-item">
+          <strong>Visão</strong>
+          <span>sdalks — conectar patrimônio a propósito.</span>
+        </div>
+        <div class="valor-item">
+          <strong>Valores</strong>
+          <span>dasjk — independência, clareza e confiança acima de tudo.</span>
+        </div>
+        <div class="valor-item">
+          <strong>Diferenciais</strong>
+          <span>dsadasdasd — estrutura e acompanhamento de alto padrão.</span>
+        </div>
+      </div>
+    </div>
+    <div class="sobre-visual">
+      <div class="visual-card">
+        <p class="visual-card-label">Para quem somos</p>
+        <p class="visual-card-text">sdkjashda — famílias e indivíduos que buscam planejamento estruturado.</p>
+        <p class="visual-card-sub">Atendemos quem está pronto para dar o próximo passo com clareza e responsabilidade.</p>
+      </div>
+      <div class="visual-card">
+        <p class="visual-card-label">Ecossistema</p>
+        <p class="visual-card-text">AWT Group — estrutura regulada, equipe de alto nível.</p>
+        <p class="visual-card-sub">Vinculados à AWT Independence S.A., com carteiras planejadas pela AWT CAVM Ltda., registrada na CVM.</p>
+      </div>
+      <div class="visual-card">
+        <p class="visual-card-label">Uma única estratégia de planejamento</p>
+        <p class="visual-card-text">Sem fragmentação. Sem ruído. Tudo conectado.</p>
+        <p class="visual-card-sub">Sua vida financeira, patrimonial e sucessória pensada como um só bloco — com começo, meio e continuidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO / CTA FINAL -->
+<section id="contato">
+  <div class="contato-bg"></div>
+  <div class="contato-inner">
+    <p class="section-label" style="color: var(--accent-light); justify-content: center;">Próximo Passo</p>
+    <h2 class="contato-title">
+      Pronto para <em>organizar</em> seu patrimônio?
+    </h2>
+    <p class="contato-sub">
+      Uma conversa sem compromisso. Vamos entender sua situação e mostrar como podemos estruturar uma estratégia de planejamento que faça sentido para você.
+    </p>
+    <div class="contato-ctas">
+      <a href="https://wa.me/5511989667904" class="btn-whatsapp" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.49"/></svg>
+        Agende uma conversa
+      </a>
+      <a href="mailto:teste@gmail.com" class="btn-email">
+        Envie um e-mail
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" style="height:40px; width:auto; display:block;"><image href="data:image/png;base64,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" width="400" height="200" preserveAspectRatio="xMidYMid meet"/></svg>
+        <p class="footer-brand-name">Wealth GUsta</p>
+        <p class="footer-brand-desc">Multi Family Office Independente vinculado ao ecossistema AWT Group. Planejamento patrimonial com independência e propósito.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navegação</p>
+        <ul class="footer-links">
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Contato</p>
+        <p class="footer-contact-item">
+          <a href="https://wa.me/5511989667904" style="color: rgba(255,255,255,0.55); text-decoration: none;" target="_blank" rel="noopener">WhatsApp: (11) 98966-7904</a>
+        </p>
+        <p class="footer-contact-item">
+          <a href="mailto:teste@gmail.com" style="color: rgba(255,255,255,0.55); text-decoration: none;">teste@gmail.com</a>
+        </p>
+        <div style="margin-top: 1.4rem;">
+          <a href="https://wa.me/5511989667904" class="btn-primary" style="font-size: 0.8rem; padding: 0.65rem 1.4rem; display: inline-block;" target="_blank" rel="noopener">Dê o próximo passo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-disclaimer">
+      <strong style="color: rgba(255,255,255,0.5); display: block; margin-bottom: 0.4rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;">Disclaimer de Compliance</strong>
+      Wealth GUsta integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Wealth GUsta. Todos os direitos reservados.</p>
+      <p class="footer-badge">Multi Family Office Independente · AWT Group</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
