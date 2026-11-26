@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alousky — Multi Family Office</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #DB0000;
+    --red-dark: #A80000;
+    --hero-bg: #0d1218;
+    --white: #ffffff;
+    --off-white: #f8f8f8;
+    --light-gray: #f2f2f2;
+    --text-dark: #111111;
+    --text-mid: #444444;
+    --text-muted: #666666;
+    --border: #e0e0e0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13, 18, 24, 0.97);
+    border-bottom: 1px solid rgba(219, 0, 0, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 72px;
+  }
+
+  .nav-logo svg { width: 200px; height: auto; display: block; }
+  .nav-logo svg text[fill="#1A1A1A"] { fill: #ffffff !important; }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav-links a:hover {
+    color: #ffffff;
+    border-bottom-color: var(--red);
+  }
+
+  .nav-cta {
+    background: var(--red);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2rem;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    background: var(--hero-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 5% 60px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  /* Geometric background decorations */
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(219, 0, 0, 0.12);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 360px;
+    height: 360px;
+    border: 1px solid rgba(219, 0, 0, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-geo-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(219,0,0,0.08), transparent);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 2rem;
+  }
+
+  .hero-label span { display: inline-block; width: 28px; height: 1px; background: var(--red); }
+
+  .hero-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.18;
+    max-width: 760px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 540px;
+    line-height: 1.75;
+    margin-bottom: 2.6rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.2rem;
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover { background: var(--red-dark); }
+
+  .btn-secondary {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.9rem 2.2rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(255,255,255,0.6);
+    color: #ffffff;
+  }
+
+  .hero-disclaimer {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    max-width: 640px;
+    line-height: 1.65;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ─── TRUST BAR ─── */
+  #trust {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 5%;
+  }
+
+  .trust-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .trust-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(219,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .trust-check svg { width: 14px; height: 14px; }
+
+  .trust-text {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    letter-spacing: 0.03em;
+  }
+
+  .trust-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border);
+  }
+
+  /* ─── SECTION SHARED ─── */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.2rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .section-desc {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 540px;
+  }
+
+  /* ─── ESPECIALIDADES ─── */
+  #especialidades {
+    background: #ffffff;
+    padding: 100px 5%;
+  }
+
+  .especialidades-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .especialidades-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .especialidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .espec-card {
+    background: #ffffff;
+    padding: 2.4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .espec-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .espec-card:hover::after { width: 100%; }
+
+  .espec-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: rgba(219,0,0,0.12);
+    line-height: 1;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .espec-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.01em;
+  }
+
+  .espec-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* ─── SOBRE ─── */
+  #sobre {
+    background: var(--off-white);
+    padding: 100px 5%;
+  }
+
+  .sobre-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .sobre-visual {
+    position: relative;
+    height: 420px;
+  }
+
+  /* Abstract geometric visual — CSS only */
+  .sobre-geo-outer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(219,0,0,0.2);
+  }
+
+  .sobre-geo-inner {
+    position: absolute;
+    top: 40px; left: 40px;
+    width: 220px;
+    height: 220px;
+    background: var(--hero-bg);
+  }
+
+  .sobre-geo-accent {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(219,0,0,0.3);
+    background: rgba(219,0,0,0.04);
+  }
+
+  .sobre-geo-line {
+    position: absolute;
+    top: 150px; left: 60px;
+    width: 180px;
+    height: 1px;
+    background: var(--red);
+    opacity: 0.4;
+  }
+
+  .sobre-geo-dot {
+    position: absolute;
+    top: 144px; left: 56px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+
+  /* SVG "A" mark in visual */
+  .sobre-monogram {
+    position: absolute;
+    top: 60px; left: 60px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sobre-content .section-label { margin-bottom: 0.8rem; }
+
+  .sobre-content .section-title { margin-bottom: 1.2rem; }
+
+  .sobre-body {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    margin-bottom: 1.8rem;
+  }
+
+  .sobre-values {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .value-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .value-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+    margin-top: 0.55rem;
+  }
+
+  .value-text {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  .value-text strong {
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+
+  /* ─── PROCESSO ─── */
+  #processo {
+    background: #ffffff;
+    padding: 100px 5%;
+  }
+
+  .processo-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .processo-header {
+    margin-bottom: 3.5rem;
+    max-width: 540px;
+  }
+
+  .processo-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    position: relative;
+  }
+
+  .processo-steps::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: var(--border);
+    z-index: 0;
+  }
+
+  .step {
+    padding: 0 1rem;
+    padding-top: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--red);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.4rem;
+  }
+
+  .step-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ─── CTA FINAL ─── */
+  #cta-final {
+    background: var(--hero-bg);
+    padding: 100px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta-final::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgba(219,0,0,0.07);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cta-final-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-final-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.6rem;
+  }
+
+  .cta-final-label span { display: inline-block; width: 22px; height: 1px; background: var(--red); }
+
+  .cta-final-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+
+  .cta-final-title em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .cta-final-sub {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    margin-bottom: 2.4rem;
+  }
+
+  .cta-final-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-wpp {
+    background: var(--red);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1rem 2.4rem;
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .btn-wpp:hover { background: var(--red-dark); }
+
+  .btn-email {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1rem 2.4rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(255,255,255,0.22);
+  }
+
+  .btn-email:hover {
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.5);
+  }
+
+  /* ─── CONTATO ─── */
+  #contato {
+    background: var(--off-white);
+    padding: 80px 5%;
+  }
+
+  .contato-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contato-info .section-title { font-size: 1.9rem; }
+
+  .contato-body {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contato-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contato-link-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contato-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(219,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contato-icon svg { width: 18px; height: 18px; }
+
+  .contato-link-text {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+  }
+
+  .contato-link-text a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contato-link-text a:hover { color: var(--red); }
+
+  .contato-link-text small {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.15rem;
+  }
+
+  /* Form */
+  .contato-form {
+    background: #ffffff;
+    padding: 2.4rem;
+    border: 1px solid var(--border);
+  }
+
+  .form-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.03em;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--off-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    outline: none;
+    border-radius: 0;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--red);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--red);
+    color: #ffffff;
+    border: none;
+    padding: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2rem;
+  }
+
+  .form-submit:hover { background: var(--red-dark); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0a0d10;
+    padding: 60px 5% 30px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr;
+    gap: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand svg { width: 180px; height: auto; display: block; margin-bottom: 1.2rem; }
+
+  .footer-brand-desc {
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.45);
+    max-width: 300px;
+  }
+
+  .footer-col-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .footer-links a:hover { color: #ffffff; }
+
+  .footer-contact-item {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
+  }
+
+  .footer-contact-item a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+  }
+
+  .footer-contact-item a:hover { color: #ffffff; }
+
+  .footer-disclaimer {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 1.4rem 1.6rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+    border-left: 2px solid var(--red);
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-bottom-red { color: var(--red); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+
+    .sobre-inner,
+    .contato-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .sobre-visual { height: 220px; }
+    .sobre-geo-outer { width: 200px; height: 200px; }
+    .sobre-geo-inner { top: 28px; left: 28px; width: 144px; height: 144px; }
+    .sobre-geo-accent { width: 120px; height: 120px; }
+
+    .processo-steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .processo-steps::before { display: none; }
+
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .trust-inner { gap: 1.4rem; }
+    .trust-divider { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-headline { font-size: 2.2rem; }
+    .processo-steps { grid-template-columns: 1fr; }
+    .nav-cta { display: none; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .cta-final-btns { flex-direction: column; align-items: center; }
+
+    #especialidades,
+    #sobre,
+    #processo,
+    #cta-final,
+    #contato { padding: 70px 5%; }
+
+    .contato-form { padding: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#hero" class="nav-logo" aria-label="Alousky">
+    <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" style="background:transparent">
+      <g transform="translate(12, 10)">
+        <polygon points="34,5 58,65 48,65 34,32 20,65 10,65" fill="#DB0000"/>
+        <polygon points="22,48 46,48 44,55 24,55" fill="white"/>
+        <polygon points="34,14 40,30 28,30" fill="white"/>
+      </g>
+      <text x="82" y="52" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" letter-spacing="2" fill="#ffffff">ALOUSKY</text>
+      <text x="84" y="70" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" letter-spacing="4" fill="#DB0000">MULTI FAMILY OFFICE</text>
+      <rect x="12" y="78" width="58" height="2.5" fill="#DB0000" rx="1"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#processo">Como Atuamos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5511989667904" class="nav-cta" target="_blank" rel="noopener">Agende uma conversa</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-geo-line" aria-hidden="true"></div>
+
+  <p class="hero-label">
+    <span></span>
+    Multi Family Office Independente
+  </p>
+
+  <h1 class="hero-headline">
+    Planejamento patrimonial construído para <em>durar gerações.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Organizamos, planejamos e estruturamos o patrimônio de famílias que exigem mais do que respostas prontas — exigem uma única estratégia de planejamento, coordenada com propósito.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="https://wa.me/5511989667904" class="btn-primary" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/>
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.656 1.438 5.168L2 22l4.978-1.306A9.943 9.943 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      </svg>
+      Converse sobre seu planejamento
+    </a>
+    <a href="#especialidades" class="btn-secondary">Conheça nossa atuação</a>
+  </div>
+
+  <p class="hero-disclaimer">
+    Alousky integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.
+  </p>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<section id="trust" aria-label="Diferenciais">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-check">
+        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 7L5.5 10.5L12 3.5" stroke="#DB0000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="trust-text">Independência total de conflitos de interesse</span>
+    </div>
+    <div class="trust-divider" aria-hidden="true"></div>
+    <div class="trust-item">
+      <div class="trust-check">
+        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 7L5.5 10.5L12 3.5" stroke="#DB0000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="trust-text">Uma única estratégia de planejamento para toda a família</span>
+    </div>
+    <div class="trust-divider" aria-hidden="true"></div>
+    <div class="trust-item">
+      <div class="trust-check">
+        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 7L5.5 10.5L12 3.5" stroke="#DB0000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="trust-text">Vinculado ao ecossistema AWT Group</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ESPECIALIDADES ─── -->
+<section id="especialidades">
+  <div class="especialidades-inner">
+    <div class="especialidades-header">
+      <p class="section-label">Especialidades</p>
+      <h2 class="section-title">O que organizamos <em>para você</em></h2>
+      <p class="section-desc">Cada família tem uma composição patrimonial única. Nossa atuação mapeia essa complexidade e a transforma em clareza, estrutura e continuidade.</p>
+    </div>
+
+    <div class="especialidades-grid">
+      <div class="espec-card">
+        <span class="espec-num">01</span>
+        <h3 class="espec-title">Planejamento Sucessório</h3>
+        <p class="espec-desc">Estruturamos a transmissão do patrimônio entre gerações com planejamento jurídico, tributário e familiar coordenados — reduzindo fricções e preservando o legado construído.</p>
+      </div>
+      <div class="espec-card">
+        <span class="espec-num">02</span>
+        <h3 class="espec-title">Consolidação Patrimonial</h3>
+        <p class="espec-desc">Mapeamos e consolidamos todos os ativos da família em uma visão única, organizada e acessível — eliminando o caos informacional que cresce com o patrimônio.</p>
+      </div>
+      <div class="espec-card">
+        <span class="espec-num">03</span>
+        <h3 class="espec-title">Governança Familiar</h3>
+        <p class="espec-desc">Construímos estruturas de governança que alinham expectativas, definem papéis e criam mecanismos de decisão que atravessam o tempo sem depender de uma única pessoa.</p>
+      </div>
+      <div class="espec-card">
+        <span class="espec-num">04</span>
+        <h3 class="espec-title">Estruturação Patrimonial</h3>
+        <p class="espec-desc">Organizamos a estrutura jurídica e societária do patrimônio familiar, simplificando o que foi acumulado ao longo de décadas em uma arquitetura clara e eficiente.</p>
+      </div>
+      <div class="espec-card">
+        <span class="espec-num">05</span>
+        <h3 class="espec-title">Coordenação de Especialistas</h3>
+        <p class="espec-desc">Conectamos advogados, contadores, consultores e demais profissionais sob uma única estratégia de planejamento — eliminando o desperdício de agendas fragmentadas.</p>
+      </div>
+      <div class="espec-card">
+        <span class="espec-num">06</span>
+        <h3 class="espec-title">Acompanhamento Contínuo</h3>
+        <p class="espec-desc">Acompanhamos a evolução do patrimônio e das necessidades familiares ao longo do tempo, ajustando o planejamento conforme a vida muda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOBRE ─── -->
+<section id="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-visual" aria-hidden="true">
+      <div class="sobre-geo-outer"></div>
+      <div class="sobre-geo-inner">
+        <div class="sobre-monogram">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+            <polygon points="40,8 62,68 52,68 40,38 28,68 18,68" fill="#DB0000"/>
+            <polygon points="27,52 53,52 51,59 29,59" fill="white"/>
+            <polygon points="40,18 46,34 34,34" fill="white"/>
+          </svg>
+        </div>
+      </div>
+      <div class="sobre-geo-accent"></div>
+      <div class="sobre-geo-line"></div>
+      <div class="sobre-geo-dot"></div>
+    </div>
+
+    <div class="sobre-content">
+      <p class="section-label">Quem Somos</p>
+      <h2 class="section-title">Uma firma construída sobre <em>convicção</em></h2>
+      <p class="sobre-body">
+        A Alousky nasceu da crença de que famílias com patrimônio significativo merecem mais do que produtos empacotados e consultores com conflito de interesse. Merecem um parceiro que pense junto — independente, técnico e comprometido com o longo prazo.
+      </p>
+      <p class="sobre-body">
+        Como Multi Family Office independente vinculado ao ecossistema AWT Group, atuamos sem agenda própria de distribuição. Nossa única agenda é a do cliente.
+      </p>
+
+      <div class="sobre-values">
+        <div class="value-row">
+          <div class="value-dot"></div>
+          <p class="value-text"><strong>Independência.</strong> Sem produto próprio para vender. Sem conflito para esconder.</p>
+        </div>
+        <div class="value-row">
+          <div class="value-dot"></div>
+          <p class="value-text"><strong>Visão de longo prazo.</strong> Planejamos para o futuro da família, não para a próxima reunião de resultados.</p>
+        </div>
+        <div class="value-row">
+          <div class="value-dot"></div>
+          <p class="value-text"><strong>Coordenação real.</strong> Conectamos todos os especialistas sob uma única estratégia integrada.</p>
+        </div>
+        <div class="value-row">
+          <div class="value-dot"></div>
+          <p class="value-text"><strong>Discrição absoluta.</strong> O patrimônio de cada família é tratado com a confidencialidade que merece.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESSO ─── -->
+<section id="processo">
+  <div class="processo-inner">
+    <div class="processo-header">
+      <p class="section-label">Como Atuamos</p>
+      <h2 class="section-title">Uma única estratégia, do diagnóstico à <em>continuidade</em></h2>
+    </div>
+
+    <div class="processo-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Diagnóstico Patrimonial</h3>
+        <p class="step-desc">Mapeamos toda a estrutura patrimonial da família — ativos, passivos, estruturas jurídicas, riscos e objetivos de cada membro.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Planejamento Integrado</h3>
+        <p class="step-desc">Estruturamos uma única estratégia de planejamento que conecta as dimensões patrimonial, sucessória, tributária e familiar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Coordenação de Execução</h3>
+        <p class="step-desc">Coordenamos todos os especialistas e processos necessários para que o plano saia do papel com eficiência e sem ruído.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Acompanhamento Contínuo</h3>
+        <p class="step-desc">Revisamos o planejamento periodicamente, adaptando a estratégia às mudanças da família, do mercado e da legislação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA FINAL ─── -->
+<section id="cta-final">
+  <div class="cta-final-inner">
+    <p class="cta-final-label">
+      <span></span>
+      Próximo Passo
+    </p>
+    <h2 class="cta-final-title">
+      Organize seu patrimônio com quem pensa no <em>longo prazo.</em>
+    </h2>
+    <p class="cta-final-sub">
+      Uma conversa sem compromisso para entender onde você está e para onde quer ir. Sem produto para vender. Sem pressa. Apenas planejamento.
+    </p>
+    <div class="cta-final-btns">
+      <a href="https://wa.me/5511989667904" class="btn-wpp" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/>
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.656 1.438 5.168L2 22l4.978-1.306A9.943 9.943 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        </svg>
+        Agende uma conversa
+      </a>
+      <a href="mailto:tes@te.com.br" class="btn-email">Envie um e-mail</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTATO ─── -->
+<section id="contato">
+  <div class="contato-inner">
+    <div class="contato-info">
+      <p class="section-label">Contato</p>
+      <h2 class="section-title" style="font-size:1.9rem;">Dê o próximo <em>passo.</em></h2>
+      <p class="contato-body">
+        Estamos disponíveis para uma primeira conversa sobre o seu planejamento patrimonial. Sem formulários longos, sem espera. Fale diretamente com nosso time.
+      </p>
+      <div class="contato-links">
+        <div class="contato-link-item">
+          <div class="contato-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#DB0000"/>
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.656 1.438 5.168L2 22l4.978-1.306A9.943 9.943 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="#DB0000" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <div class="contato-link-text">
+            <small>WhatsApp</small>
+            <a href="https://wa.me/5511989667904" target="_blank" rel="noopener">(11) 98966-7904</a>
+          </div>
+        </div>
+        <div class="contato-link-item">
+          <div class="contato-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#DB0000" stroke-width="1.5"/>
+              <path d="M2 8l10 6 10-6" stroke="#DB0000" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="contato-link-text">
+            <small>E-mail</small>
+            <a href="mailto:tes@te.com.br">tes@te.com.br</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contato-form">
+      <p class="form-title">Envie uma mensagem</p>
+      <form action="mailto:tes@te.com.br" method="post" enctype="text/plain">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo">
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com.br">
+        </div>
+        <div class="form-group">
+          <label for="tel">Telefone</label>
+          <input type="tel" id="tel" name="telefone" placeholder="(00) 00000-0000">
+        </div>
+        <div class="form-group">
+          <label for="msg">Mensagem</label>
+          <textarea id="msg" name="mensagem" placeholder="Como podemos ajudar no seu planejamento?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar mensagem</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" style="background:transparent">
+          <g transform="translate(12, 10)">
+            <polygon points="34,5 58,65 48,65 34,32 20,65 10,65" fill="#DB0000"/>
+            <polygon points="22,48 46,48 44,55 24,55" fill="white"/>
+            <polygon points="34,14 40,30 28,30" fill="white"/>
+          </g>
+          <text x="82" y="52" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" letter-spacing="2" fill="#ffffff">ALOUSKY</text>
+          <text x="84" y="70" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" letter-spacing="4" fill="#DB0000">MULTI FAMILY OFFICE</text>
+          <rect x="12" y="78" width="58" height="2.5" fill="#DB0000" rx="1"/>
+        </svg>
+        <p class="footer-brand-desc">
+          Planejamento patrimonial independente para famílias que constroem legados. Vinculado ao ecossistema AWT Group.
+        </p>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Navegação</p>
+        <ul class="footer-links">
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#sobre">Quem Somos</a></li>
+          <li><a href="#processo">Como Atuamos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Contato</p>
+        <p class="footer-contact-item">
+          <a href="https://wa.me/5511989667904" target="_blank" rel="noopener">(11) 98966-7904</a>
+        </p>
+        <p class="footer-contact-item">
+          <a href="mailto:tes@te.com.br">tes@te.com.br</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-disclaimer">
+      Alousky integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Alousky Multi Family Office. Todos os direitos reservados.</span>
+      <span class="footer-bottom-red">AWT Group Ecosystem</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
