@@ -1,0 +1,24 @@
+{
+  "escritorio": "Aloha Uelf",
+  "slug": "aloha-uelf",
+  "materiais": {
+    "cartao": {
+      "acao": "criar"
+    },
+    "logo": {
+      "acao": "ajustar",
+      "arquivo": "Captura de tela 2026-10-19 211047.png",
+      "pedido": "estilo awt"
+    },
+    "site": {
+      "acao": "criar"
+    },
+    "timbrado": {
+      "acao": "criar"
+    }
+  },
+  "foto": {
+    "enviada": true,
+    "tratamento": "ia"
+  }
+}

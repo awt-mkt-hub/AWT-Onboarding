@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aloha Uelf — Planejamento Patrimonial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #331E42;
+  --primary-light: #4a2d5f;
+  --hero-bg: #0d0a12;
+  --hero-mid: #1a0f28;
+  --gold: #c9a96e;
+  --white: #ffffff;
+  --off-white: #f8f7fa;
+  --light-gray: #f2f1f5;
+  --text-dark: #111118;
+  --text-mid: #3d3848;
+  --text-muted: #6b6478;
+  --border: #e4e0ea;
+  --section-label-color: #331E42;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── TYPOGRAPHY ─── */
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1.1;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 700; }
+h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 600; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+p { max-width: 68ch; line-height: 1.75; }
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: "——— ";
+}
+
+/* ─── NAVIGATION ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(13, 10, 18, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-logo svg .logo-stroke { stroke: #ffffff; }
+.nav-logo svg text { fill: #ffffff; }
+.nav-logo svg line[stroke="#331E42"] { stroke: rgba(255,255,255,0.5); }
+
+.nav-logo {
+  display: block;
+  height: 44px;
+}
+
+.nav-logo svg {
+  height: 44px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-cta {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  padding: 0.5rem 1.3rem;
+  border-radius: 2rem;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+}
+
+.nav-cta:hover {
+  background: var(--primary-light) !important;
+  color: #ffffff !important;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #0d0a12 0%, #1a0f28 45%, #0f0d1a 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 2.5rem;
+}
+
+.hero-geometry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.hero-geometry svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-left {}
+
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+}
+
+.hero-eyebrow::before {
+  content: "——— ";
+}
+
+.hero-headline {
+  color: #ffffff;
+  margin-bottom: 1.6rem;
+  font-weight: 700;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-headline .muted {
+  color: rgba(255,255,255,0.38);
+}
+
+.hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.8;
+  margin-bottom: 2.6rem;
+  max-width: 46ch;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  border: 2px solid var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-light);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.28);
+}
+
+.btn-outline:hover {
+  border-color: rgba(255,255,255,0.65);
+  color: #ffffff;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-emblem {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+.hero-emblem svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-disclaimer {
+  position: relative;
+  z-index: 2;
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.8rem;
+}
+
+.hero-disclaimer p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.42);
+  line-height: 1.7;
+  max-width: 90ch;
+}
+
+/* ─── TRUST BAR ─── */
+#trust {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2.4rem 2.5rem;
+}
+
+.trust-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 2.5rem;
+  flex: 1;
+  min-width: 220px;
+  max-width: 340px;
+}
+
+.trust-item + .trust-item {
+  border-left: 1px solid var(--border);
+}
+
+.trust-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background: rgba(51, 30, 66, 0.07);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.trust-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.trust-text strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.2rem;
+}
+
+.trust-text span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ─── ESPECIALIDADES ─── */
+#especialidades {
+  background: var(--white);
+  padding: 6rem 2.5rem;
+}
+
+.especialidades-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.especialidades-header {
+  margin-bottom: 3.5rem;
+}
+
+.especialidades-header h2 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.especialidades-header h2 em {
+  font-style: italic;
+  color: var(--primary);
+}
+
+.especialidades-header p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+  border: 1.5px solid var(--border);
+}
+
+.card {
+  background: var(--white);
+  padding: 2.5rem;
+  position: relative;
+}
+
+.card-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(51, 30, 66, 0.07);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(51, 30, 66, 0.06);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.card-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--primary);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+}
+
+.card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.72;
+  max-width: 36ch;
+}
+
+.card-accent {
+  position: absolute;
+  bottom: 0;
+  left: 2.5rem;
+  width: 32px;
+  height: 2px;
+  background: var(--primary);
+}
+
+/* ─── SOBRE ─── */
+#sobre {
+  background: var(--off-white);
+  padding: 6rem 2.5rem;
+}
+
+.sobre-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.sobre-left {}
+
+.sobre-left h2 {
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.sobre-left h2 em {
+  font-style: italic;
+  color: var(--primary);
+}
+
+.sobre-lead {
+  font-size: 1rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.sobre-body {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.sobre-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  margin-top: 0.5rem;
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 2px;
+}
+
+.sobre-cta:hover {
+  color: var(--primary-light);
+  border-color: var(--primary-light);
+}
+
+.sobre-right {}
+
+.valores-block {
+  margin-top: 0;
+}
+
+.valor-item {
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+.valor-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.valor-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(51, 30, 66, 0.25);
+  flex-shrink: 0;
+  min-width: 2rem;
+  margin-top: 2px;
+}
+
+.valor-content strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.3rem;
+}
+
+.valor-content span {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── PROCESSO ─── */
+#processo {
+  background: var(--white);
+  padding: 6rem 2.5rem;
+}
+
+.processo-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.processo-header {
+  margin-bottom: 3.5rem;
+}
+
+.processo-header h2 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.processo-header h2 em {
+  font-style: italic;
+  color: var(--primary);
+}
+
+.steps-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.steps-track::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+.step-dot {
+  width: 40px;
+  height: 40px;
+  background: var(--white);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.step-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.step-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── CTA FINAL ─── */
+#cta-final {
+  background: linear-gradient(145deg, #0d0a12 0%, #1a0f28 60%, #0f0d1a 100%);
+  padding: 7rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-geometry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.cta-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+}
+
+.cta-eyebrow::before {
+  content: "——— ";
+}
+
+#cta-final h2 {
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+}
+
+#cta-final h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+#cta-final .cta-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.58);
+  line-height: 1.8;
+  margin: 0 auto 2.8rem;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--gold);
+  color: #111;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  border: 2px solid var(--gold);
+}
+
+.btn-gold:hover {
+  background: #d4b47d;
+  border-color: #d4b47d;
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: rgba(255,255,255,0.82);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 0.9rem 2.2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+
+.btn-outline-white:hover {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.7);
+}
+
+.cta-contact-line {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+}
+
+.cta-contact-line a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+}
+
+.cta-contact-line a:hover {
+  color: var(--gold);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #09070e;
+  padding: 4rem 2.5rem 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-brand {}
+
+.footer-logo {
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.footer-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+  max-width: 32ch;
+}
+
+.footer-col-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1.2rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.65rem;
+}
+
+.footer-col ul li a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+}
+
+.footer-col ul li a:hover {
+  color: var(--gold);
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.footer-contact-item svg {
+  width: 14px;
+  height: 14px;
+  stroke: rgba(255,255,255,0.35);
+  fill: none;
+  stroke-width: 1.5;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.footer-contact-item a,
+.footer-contact-item span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.footer-contact-item a:hover {
+  color: var(--gold);
+}
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 2rem;
+}
+
+.footer-disclaimer {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.8;
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.28);
+}
+
+.awt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.05em;
+}
+
+.awt-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .steps-track {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .steps-track::before {
+    display: none;
+  }
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(13, 10, 18, 0.97);
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-top: 7rem;
+  }
+
+  .hero-right {
+    display: none;
+  }
+
+  #hero { padding: 0 1.5rem; }
+
+  .hero-disclaimer { padding: 0 0 2rem; }
+
+  #trust { padding: 2rem 1.5rem; }
+  .trust-inner { flex-direction: column; gap: 0; }
+  .trust-item { border-left: none; border-top: 1px solid var(--border); padding: 1.2rem 0; max-width: 100%; width: 100%; }
+  .trust-item:first-child { border-top: none; }
+
+  #especialidades, #sobre, #processo, #cta-final { padding: 4rem 1.5rem; }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .steps-track {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .step { text-align: left; display: flex; gap: 1.2rem; align-items: flex-start; padding: 0; }
+  .step-dot { margin: 0; flex-shrink: 0; }
+  .step-body { text-align: left; }
+  .step-title { margin-bottom: 0.3rem; }
+
+  footer { padding: 3rem 1.5rem 2rem; }
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-actions { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.7rem; }
+  .hero-actions { flex-direction: column; }
+  .btn-primary, .btn-outline, .btn-gold, .btn-outline-white { width: 100%; text-align: center; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAVEGAÇÃO ─── -->
+<nav>
+  <a href="#hero" class="nav-logo" aria-label="Aloha Uelf">
+    <svg viewBox="0 0 320 90" xmlns="http://www.w3.org/2000/svg" width="160" height="45">
+      <defs>
+        <linearGradient id="iconGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#8a6fa0;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#c9a96e;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <g transform="translate(12, 10)">
+        <polygon points="34,2 62,18 62,50 34,66 6,50 6,18" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
+        <line x1="34" y1="2" x2="34" y2="66" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+        <line x1="6" y1="18" x2="62" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+        <line x1="62" y1="18" x2="6" y2="50" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+        <polygon points="34,22 46,34 34,46 22,34" fill="rgba(255,255,255,0.08)"/>
+        <polygon points="34,26 42,34 34,42 26,34" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2"/>
+        <circle cx="34" cy="34" r="3" fill="rgba(255,255,255,0.9)"/>
+        <line x1="22" y1="11" x2="46" y2="11" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+        <line x1="22" y1="57" x2="46" y2="57" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+      </g>
+      <line x1="92" y1="18" x2="92" y2="72" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <g transform="translate(104, 0)">
+        <text x="0" y="52" font-family="Montserrat, Arial, sans-serif" font-size="36" font-weight="700" letter-spacing="6" fill="#ffffff">ALOHA</text>
+        <text x="2" y="70" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="9" fill="rgba(255,255,255,0.65)">UELF</text>
+        <line x1="2" y1="75" x2="175" y2="75" stroke="rgba(255,255,255,0.18)" stroke-width="0.8"/>
+      </g>
+    </svg>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#especialidades">Especialidades</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#processo">Como Funciona</a></li>
+    <li><a href="https://wa.me/5511989667904" target="_blank" rel="noopener" class="nav-cta">Agendar Conversa</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+
+  <!-- Geometric background decoration -->
+  <div class="hero-geometry" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Large hexagon right -->
+      <polygon points="1180,80 1340,172 1340,356 1180,448 1020,356 1020,172" fill="none" stroke="rgba(201,169,110,0.08)" stroke-width="1.5"/>
+      <!-- Medium hexagon -->
+      <polygon points="1220,120 1320,178 1320,294 1220,352 1120,294 1120,178" fill="none" stroke="rgba(201,169,110,0.05)" stroke-width="1"/>
+      <!-- Small accent hex -->
+      <polygon points="80,620 140,655 140,724 80,759 20,724 20,655" fill="none" stroke="rgba(201,169,110,0.07)" stroke-width="1"/>
+      <!-- Diagonal lines subtle -->
+      <line x1="0" y1="900" x2="400" y2="400" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+      <line x1="1440" y1="0" x2="900" y2="600" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+      <!-- Center glow -->
+      <ellipse cx="720" cy="450" rx="600" ry="300" fill="rgba(51,30,66,0.18)"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Multi Family Office Independente</div>
+      <h1 class="hero-headline">
+        Estruture o futuro<br>
+        do seu <em>patrimônio</em><br>
+        <span class="muted">com quem pensa<br>no longo prazo.</span>
+      </h1>
+      <p class="hero-sub">
+        Planejamento patrimonial construído ao redor da sua história, dos seus herdeiros e do que realmente importa para você.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5511989667904" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.546 5.877L0 24l6.336-1.521A11.937 11.937 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.797 9.797 0 01-5.001-1.368l-.36-.213-3.76.903.944-3.666-.234-.375A9.797 9.797 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Converse sobre seu planejamento
+        </a>
+        <a href="#especialidades" class="btn-outline">Conheça nosso trabalho</a>
+      </div>
+    </div>
+
+    <div class="hero-right" aria-hidden="true">
+      <!-- Decorative geometric emblem -->
+      <div class="hero-emblem">
+        <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer ring -->
+          <circle cx="160" cy="160" r="148" fill="none" stroke="rgba(201,169,110,0.12)" stroke-width="1"/>
+          <!-- Main hexagon -->
+          <polygon points="160,30 265,90 265,210 160,270 55,210 55,90" fill="none" stroke="rgba(201,169,110,0.25)" stroke-width="1.5"/>
+          <!-- Inner hexagon -->
+          <polygon points="160,70 230,110 230,190 160,230 90,190 90,110" fill="none" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
+          <!-- Inner lines -->
+          <line x1="160" y1="30" x2="160" y2="270" stroke="rgba(201,169,110,0.08)" stroke-width="1"/>
+          <line x1="55" y1="90" x2="265" y2="210" stroke="rgba(201,169,110,0.08)" stroke-width="1"/>
+          <line x1="265" y1="90" x2="55" y2="210" stroke="rgba(201,169,110,0.08)" stroke-width="1"/>
+          <!-- Center diamond -->
+          <polygon points="160,110 200,150 160,190 120,150" fill="none" stroke="rgba(201,169,110,0.4)" stroke-width="1.5"/>
+          <polygon points="160,128 182,150 160,172 138,150" fill="rgba(201,169,110,0.08)"/>
+          <!-- Center dot -->
+          <circle cx="160" cy="150" r="5" fill="rgba(201,169,110,0.7)"/>
+          <!-- Accent dots at hex vertices -->
+          <circle cx="160" cy="30" r="2.5" fill="rgba(201,169,110,0.35)"/>
+          <circle cx="265" cy="90" r="2.5" fill="rgba(201,169,110,0.35)"/>
+          <circle cx="265" cy="210" r="2.5" fill="rgba(201,169,110,0.35)"/>
+          <circle cx="160" cy="270" r="2.5" fill="rgba(201,169,110,0.35)"/>
+          <circle cx="55" cy="210" r="2.5" fill="rgba(201,169,110,0.35)"/>
+          <circle cx="55" cy="90" r="2.5" fill="rgba(201,169,110,0.35)"/>
+          <!-- Top bar accent -->
+          <line x1="120" y1="52" x2="200" y2="52" stroke="rgba(201,169,110,0.2)" stroke-width="1.5"/>
+          <!-- Bottom bar accent -->
+          <line x1="120" y1="248" x2="200" y2="248" stroke="rgba(201,169,110,0.2)" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-disclaimer">
+    <p>Aloha Uelf integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.</p>
+  </div>
+
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<section id="trust">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#331E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div class="trust-text">
+        <strong>Independente e sem conflito</strong>
+        <span>Vinculado à AWT Independence S.A. — sem produtos próprios para vender.</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#331E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <div class="trust-text">
+        <strong>Uma única estratégia de planejamento</strong>
+        <span>Visão integrada de todo o seu patrimônio, não partes isoladas.</span>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#331E42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="trust-text">
+        <strong>Dedicado à sua família</strong>
+        <span>Planejamento patrimonial construído para gerações, não trimestres.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ESPECIALIDADES ─── -->
+<section id="especialidades">
+  <div class="especialidades-inner">
+    <div class="especialidades-header">
+      <div class="section-label">Especialidades</div>
+      <h2>O que organizamos <em>para você</em></h2>
+      <p>Estruturamos cada dimensão do seu patrimônio com método, clareza e atenção ao detalhe — do planejamento sucessório à proteção previdenciária.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-number">01</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Planejamento Sucessório</h3>
+        <p>Estruturamos a transmissão do seu patrimônio com segurança jurídica, respeitando a vontade de cada família e minimizando litígios futuros.</p>
+        <div class="card-accent"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-number">02</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Previdência Privada</h3>
+        <p>Mapeamos as melhores estruturas previdenciárias para construir renda futura com eficiência fiscal, alinhadas ao seu horizonte de vida.</p>
+        <div class="card-accent"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-number">03</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <h3>Consolidação Patrimonial</h3>
+        <p>Consolidamos todos os seus ativos em uma visão única — imóveis, participações, aplicações e proteções — para decisões mais claras.</p>
+        <div class="card-accent"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-number">04</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3>Estruturação de Holdings</h3>
+        <p>Planejamos estruturas societárias eficientes para organizar e proteger o patrimônio familiar ao longo das gerações.</p>
+        <div class="card-accent"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-number">05</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <h3>Relatórios Consolidados</h3>
+        <p>Produzimos relatórios periódicos que simplificam a leitura do seu patrimônio, com linguagem acessível e visão estratégica.</p>
+        <div class="card-accent"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-number">06</div>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3>Acompanhamento Contínuo</h3>
+        <p>Acompanhamos a evolução do seu planejamento ao longo do tempo, revisando rotas conforme a vida muda e novas oportunidades surgem.</p>
+        <div class="card-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOBRE ─── -->
+<section id="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-left">
+      <div class="section-label">Sobre a Aloha Uelf</div>
+      <h2>Uma relação construída no <em>longo prazo</em></h2>
+      <p class="sobre-lead">
+        Aloha Uelf nasceu da convicção de que famílias com patrimônio significativo merecem uma abordagem que vai além dos números — uma parceria humana, estruturada e comprometida com o que realmente importa.
+      </p>
+      <p class="sobre-body">
+        Somos um Multi Family Office independente, conectados ao ecossistema AWT Group, o que nos permite oferecer acesso a estruturas e profissionais de alto padrão sem os conflitos de interesse que existem em modelos tradicionais.
+      </p>
+      <p class="sobre-body">
+        Nosso trabalho começa antes do planejamento: começa ouvindo. Cada família tem uma história própria, objetivos únicos e heranças a preservar. Organizamos esse universo com método, clareza e cuidado.
+      </p>
+      <a href="https://wa.me/5511989667904" target="_blank" rel="noopener" class="sobre-cta">
+        Converse com nossa equipe →
+      </a>
+    </div>
+
+    <div class="sobre-right">
+      <div class="section-label">Nossos princípios</div>
+      <div class="valores-block">
+        <div class="valor-item">
+          <div class="valor-num">I</div>
+          <div class="valor-content">
+            <strong>Independência absoluta</strong>
+            <span>Nenhuma comissão, nenhum produto próprio. Nossa remuneração é transparente e alinhada ao seu interesse.</span>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-num">II</div>
+          <div class="valor-content">
+            <strong>Visão de longo prazo</strong>
+            <span>Planejamos para gerações, não para trimestres. O horizonte de cada decisão é a continuidade do seu legado.</span>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-num">III</div>
+          <div class="valor-content">
+            <strong>Clareza sem simplificação</strong>
+            <span>Tornamos o complexo compreensível, sem perder a profundidade que cada situação exige.</span>
+          </div>
+        </div>
+        <div class="valor-item">
+          <div class="valor-num">IV</div>
+          <div class="valor-content">
+            <strong>Presença real</strong>
+            <span>Estamos acessíveis quando você precisa, não apenas nos momentos de crise.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESSO ─── -->
+<section id="processo">
+  <div class="processo-inner">
+    <div class="processo-header">
+      <div class="section-label">Como Funciona</div>
+      <h2>Uma única estratégia de <em>planejamento</em></h2>
+      <p>Do primeiro contato à estruturação completa — um processo claro, em etapas, construído ao redor da sua realidade.</p>
+    </div>
+
+    <div class="steps-track">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <div class="step-body">
+          <div class="step-title">Conversa inicial</div>
+          <div class="step-desc">Ouvimos sua história, objetivos e o que mais importa para sua família. Sem formulários, sem pressão.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <div class="step-body">
+          <div class="step-title">Mapeamento patrimonial</div>
+          <div class="step-desc">Consolidamos uma visão completa do seu patrimônio — estruturas, proteções, lacunas e oportunidades.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <div class="step-body">
+          <div class="step-title">Estruturação do plano</div>
+          <div class="step-desc">Organizamos uma estratégia integrada de planejamento, conectando todas as dimensões da sua vida financeira.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-body">
+          <div class="step-title">Acompanhamento contínuo</div>
+          <div class="step-desc">Revisamos e ajustamos o planejamento conforme sua vida evolui — uma parceria que cresce com você.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA FINAL ─── -->
+<section id="cta-final">
+
+  <div class="cta-geometry" aria-hidden="true">
+    <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="720,50 820,106 820,218 720,274 620,218 620,106" fill="none" stroke="rgba(201,169,110,0.1)" stroke-width="1.5"/>
+      <polygon points="720,100 790,140 790,220 720,260 650,220 650,140" fill="none" stroke="rgba(201,169,110,0.06)" stroke-width="1"/>
+      <circle cx="720" cy="180" r="200" fill="rgba(51,30,66,0.2)"/>
+      <line x1="0" y1="600" x2="500" y2="0" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+      <line x1="1440" y1="0" x2="940" y2="600" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Próximo passo</div>
+    <h2>Organize seu patrimônio<br>com quem <em>entende</em> a sua história</h2>
+    <p class="cta-sub">Uma conversa sem compromisso pode ser o início de um planejamento que atravessa gerações. Estamos prontos para ouvir.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/5511989667904" target="_blank" rel="noopener" class="btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.564 4.14 1.546 5.877L0 24l6.336-1.521A11.937 11.937 0 0012 24c6.627 0 12-5
