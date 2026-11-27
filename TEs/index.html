@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TEs — Multi Family Office</title>
+<title>TEs Wealth — Planejamento Patrimonial</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,15 +16,16 @@
 
 :root {
   --primary: #9000FF;
-  --primary-dark: #5a0099;
+  --primary-dark: #6B00CC;
+  --primary-deeper: #3d0070;
   --hero-bg: #0d0520;
-  --hero-bg-alt: #110628;
   --white: #ffffff;
-  --light: #f8f8f8;
-  --mid: #efefef;
-  --dark: #111111;
-  --muted: #555555;
-  --border: #e0e0e0;
+  --light-bg: #f8f7fb;
+  --text-dark: #111118;
+  --text-mid: #3a3a4a;
+  --text-muted: #6b6b80;
+  --border-light: rgba(144, 0, 255, 0.15);
+  --border-subtle: rgba(0,0,0,0.08);
 }
 
 html {
@@ -33,441 +34,346 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 16px;
+  background: var(--hero-bg);
+  color: var(--white);
   line-height: 1.6;
-  color: var(--dark);
-  background: var(--white);
+  overflow-x: hidden;
 }
 
-/* ═══════════════════════════════════════
+/* =====================
    NAV
-═══════════════════════════════════════ */
+===================== */
 nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.25rem 2.5rem;
+  padding: 1.2rem 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: rgba(13, 5, 32, 0.92);
-  border-bottom: 1px solid rgba(144, 0, 255, 0.15);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(144, 0, 255, 0.12);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
 }
 
 .nav-logo svg {
-  width: 160px;
-  height: auto;
-}
-
-/* Override SVG text colors for dark nav background */
-.nav-logo svg text[fill="#9000FF"] {
-  fill: #c066ff;
-}
-.nav-logo svg line[stroke="#9000FF"] {
-  stroke: #c066ff;
-}
-.nav-logo svg polygon {
-  stroke: #c066ff;
+  height: 54px;
+  width: auto;
 }
 
 .nav-links {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
-  color: rgba(255,255,255,0.75);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  transition: color 0.2s;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: #c066ff;
+  color: var(--primary);
 }
 
 .nav-cta {
   background: var(--primary);
-  color: #fff !important;
-  padding: 0.55rem 1.4rem;
-  border-radius: 4px;
-  font-weight: 500 !important;
-  letter-spacing: 0.03em !important;
-  transition: background 0.2s !important;
+  color: var(--white) !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.1em !important;
+  font-weight: 600 !important;
 }
 
 .nav-cta:hover {
-  background: var(--primary-dark) !important;
-  color: #fff !important;
+  background: var(--primary-dark);
+  color: var(--white) !important;
 }
 
-.nav-mobile-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.nav-mobile-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 2px;
-}
-
-/* ═══════════════════════════════════════
+/* =====================
    HERO
-═══════════════════════════════════════ */
+===================== */
 #hero {
   min-height: 100vh;
   background: var(--hero-bg);
-  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 7rem 2rem 5rem;
+  position: relative;
   overflow: hidden;
-  padding-top: 80px;
 }
 
-/* Geometric background shapes — CSS only */
 .hero-geo {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   pointer-events: none;
 }
 
-.hero-geo-1 {
+.hero-geo-circle-1 {
+  position: absolute;
   top: -120px;
   right: -120px;
-  width: 520px;
-  height: 520px;
-  border: 1px solid rgba(144, 0, 255, 0.12);
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
+  border: 1px solid rgba(144, 0, 255, 0.18);
 }
 
-.hero-geo-2 {
-  top: 40px;
-  right: 40px;
-  width: 320px;
-  height: 320px;
-  border: 1px solid rgba(144, 0, 255, 0.08);
+.hero-geo-circle-2 {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
-}
-
-.hero-geo-3 {
-  bottom: 80px;
-  left: -60px;
-  width: 280px;
-  height: 280px;
-  border: 1px solid rgba(144, 0, 255, 0.07);
-  border-radius: 50%;
-}
-
-.hero-geo-4 {
-  top: 50%;
-  right: 10%;
-  transform: translateY(-50%) rotate(30deg);
-  width: 180px;
-  height: 180px;
   border: 1px solid rgba(144, 0, 255, 0.1);
 }
 
-/* Purple glow blob */
-.hero-blob {
+.hero-geo-circle-3 {
   position: absolute;
-  top: 20%;
-  right: 5%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(ellipse at center, rgba(144,0,255,0.14) 0%, transparent 70%);
-  pointer-events: none;
+  bottom: -150px;
+  left: -150px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  border: 1px solid rgba(144, 0, 255, 0.1);
 }
 
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 4rem;
-  width: 100%;
+.hero-geo-line-v {
+  position: absolute;
+  left: 10%;
+  top: 15%;
+  width: 1px;
+  height: 220px;
+  background: linear-gradient(to bottom, transparent, rgba(144,0,255,0.3), transparent);
 }
 
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.hero-geo-line-v2 {
+  position: absolute;
+  right: 10%;
+  bottom: 20%;
+  width: 1px;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, rgba(144,0,255,0.25), transparent);
 }
 
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: rgba(192, 102, 255, 0.9);
-  font-size: 0.72rem;
+.hero-geo-diamond {
+  position: absolute;
+  left: 7%;
+  top: 55%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(144,0,255,0.25);
+  transform: rotate(45deg);
+}
+
+.hero-label {
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.8rem;
+  font-family: 'Inter', sans-serif;
 }
 
-.hero-eyebrow::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: rgba(192, 102, 255, 0.6);
-}
-
-h1.hero-headline {
+.hero-headline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
   font-weight: 600;
   line-height: 1.18;
   color: var(--white);
-  max-width: 600px;
+  max-width: 820px;
+  margin: 0 auto 1.4rem;
+  letter-spacing: -0.01em;
 }
 
-h1.hero-headline em {
+.hero-headline em {
   font-style: italic;
-  color: #c066ff;
+  color: var(--primary);
 }
 
 .hero-sub {
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.75;
-  max-width: 480px;
   font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  margin: 0 auto 2.8rem;
+  line-height: 1.75;
 }
 
-.hero-actions {
+.hero-ctas {
   display: flex;
   gap: 1rem;
+  justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 3.5rem;
 }
 
 .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: inline-block;
   background: var(--primary);
-  color: #fff;
+  color: var(--white);
+  padding: 0.95rem 2.4rem;
+  border-radius: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  padding: 0.9rem 2rem;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
   background: var(--primary-dark);
+  color: var(--white);
 }
 
 .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: inline-block;
   background: transparent;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.85);
+  padding: 0.95rem 2.4rem;
+  border-radius: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  padding: 0.9rem 2rem;
-  border-radius: 4px;
-  font-weight: 400;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: border-color 0.2s, color 0.2s;
+  border: 1px solid rgba(255,255,255,0.25);
 }
 
 .btn-secondary:hover {
-  border-color: rgba(192, 102, 255, 0.5);
-  color: #c066ff;
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
-/* Hero Right: decorative panel */
-.hero-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-panel {
-  position: relative;
-  width: 340px;
-  height: 420px;
-}
-
-.hero-panel-box {
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(144, 0, 255, 0.25);
-  border-radius: 8px;
-  background: rgba(144, 0, 255, 0.04);
-}
-
-.hero-panel-box-inner {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  right: -20px;
-  bottom: -20px;
-  border: 1px solid rgba(144, 0, 255, 0.12);
-  border-radius: 8px;
-}
-
-.hero-panel-content {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem;
-  gap: 1.2rem;
-}
-
-.hero-panel-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(192, 102, 255, 0.7);
-}
-
-.hero-panel-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  padding: 1.2rem;
-  border: 1px solid rgba(144, 0, 255, 0.15);
-  border-radius: 6px;
-  background: rgba(144, 0, 255, 0.05);
-}
-
-.hero-panel-stat-value {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.hero-panel-stat-label {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.5);
-  font-weight: 300;
-}
-
-.hero-panel-divider {
-  width: 40px;
-  height: 1px;
-  background: rgba(144,0,255,0.4);
-}
-
-.hero-panel-quote {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.95rem;
-  font-style: italic;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.6;
-}
-
-/* Hero disclaimer */
 .hero-disclaimer {
-  position: relative;
-  z-index: 2;
-  margin: 0 2.5rem;
-  padding: 1.2rem 1.8rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 6px;
-  color: rgba(255,255,255,0.55);
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+  border: 1px solid rgba(144, 0, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(144, 0, 255, 0.06);
   font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  color: rgba(255,255,255,0.55);
   line-height: 1.65;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2.5rem;
+  text-align: center;
 }
 
-/* ═══════════════════════════════════════
+/* =====================
    TRUST BAR
-═══════════════════════════════════════ */
+===================== */
 #trust-bar {
   background: var(--white);
-  border-top: 3px solid var(--primary);
-  border-bottom: 1px solid var(--border);
-  padding: 2rem 2.5rem;
+  padding: 2.4rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
 }
 
-.trust-bar-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+.trust-inner {
+  display: flex;
   align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1100px;
+  width: 100%;
 }
 
 .trust-item {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 2.5rem;
+  flex: 1;
+  min-width: 220px;
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+.trust-item:last-child {
+  border-right: none;
 }
 
 .trust-icon {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: rgba(144, 0, 255, 0.08);
+  background: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--primary);
-  font-size: 1rem;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: 700;
+}
+
+.trust-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.4;
 }
 
 .trust-text strong {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--dark);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 400;
   margin-bottom: 0.15rem;
 }
 
-.trust-text span {
-  font-size: 0.78rem;
-  color: var(--muted);
-  line-height: 1.5;
+/* =====================
+   ESPECIALIDADES
+===================== */
+#especialidades {
+  background: var(--white);
+  padding: 7rem 4rem;
 }
 
-.trust-divider {
-  display: none;
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* ═══════════════════════════════════════
-   SECTION HELPERS
-═══════════════════════════════════════ */
 .section-label {
-  font-size: 0.72rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -478,698 +384,481 @@ h1.hero-headline em {
   display: inline-block;
   width: 28px;
   height: 1px;
-  background: var(--muted);
-}
-
-.section-label.light {
-  color: rgba(255,255,255,0.45);
-}
-
-.section-label.light::before {
-  background: rgba(255,255,255,0.3);
-}
-
-.section-label.accent {
-  color: var(--primary);
-}
-
-.section-label.accent::before {
   background: var(--primary);
 }
 
-/* ═══════════════════════════════════════
-   ESPECIALIDADES
-═══════════════════════════════════════ */
-#especialidades {
-  background: var(--white);
-  padding: 6rem 2.5rem;
-}
-
-.especialidades-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.especialidades-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 3.5rem;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.especialidades-header-left {
-  flex: 1;
-  min-width: 260px;
-}
-
-h2.section-headline {
+.section-headline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.9rem, 3.5vw, 2.9rem);
   font-weight: 600;
-  line-height: 1.25;
-  color: var(--dark);
+  color: var(--text-dark);
+  line-height: 1.22;
+  max-width: 580px;
+  margin-bottom: 1rem;
 }
 
-h2.section-headline em {
+.section-headline em {
   font-style: italic;
   color: var(--primary);
 }
 
-.especialidades-header-right {
-  max-width: 340px;
-  font-size: 0.9rem;
-  color: var(--muted);
-  line-height: 1.7;
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 3.5rem;
 }
 
-/* Cards grid */
-.esp-grid {
+.especialidades-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
-.esp-card {
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 2rem 1.8rem;
+.espec-card {
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--primary);
+  padding: 2rem 2rem 2rem 2rem;
+  background: var(--white);
   position: relative;
   overflow: hidden;
-  background: var(--white);
-  transition: border-color 0.2s;
 }
 
-.esp-card:hover {
-  border-color: rgba(144, 0, 255, 0.35);
-}
-
-.esp-card::before {
+.espec-card::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--primary);
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-top: 1px solid rgba(144,0,255,0.1);
+  border-left: 1px solid rgba(144,0,255,0.1);
+  pointer-events: none;
 }
 
-.esp-card-number {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: rgba(144, 0, 255, 0.4);
-  margin-bottom: 1.5rem;
-  font-family: 'Inter', sans-serif;
-}
-
-.esp-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  background: rgba(144, 0, 255, 0.07);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.2rem;
-}
-
-.esp-card-icon svg {
-  width: 20px;
-  height: 20px;
-}
-
-h3.esp-title {
+.espec-num {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: rgba(144,0,255,0.12);
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.espec-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: var(--dark);
-  margin-bottom: 0.75rem;
+  color: var(--text-dark);
+  margin-bottom: 0.6rem;
   line-height: 1.3;
 }
 
-.esp-desc {
+.espec-body {
   font-size: 0.85rem;
-  color: var(--muted);
+  color: var(--text-muted);
   line-height: 1.7;
 }
 
-.esp-tag {
-  display: inline-block;
-  margin-top: 1.2rem;
-  padding: 4px 12px;
-  background: rgba(144, 0, 255, 0.07);
-  border: 1px solid rgba(144, 0, 255, 0.15);
-  border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--primary);
-  letter-spacing: 0.04em;
-}
-
-/* ═══════════════════════════════════════
+/* =====================
    SOBRE
-═══════════════════════════════════════ */
+===================== */
 #sobre {
-  background: var(--light);
-  padding: 6rem 2.5rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: var(--light-bg);
+  padding: 7rem 4rem;
 }
 
-.sobre-inner {
-  max-width: 1200px;
-  margin: 0 auto;
+.sobre-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: start;
-}
-
-.sobre-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-h2.sobre-headline {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.9rem, 3vw, 2.6rem);
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--dark);
-}
-
-h2.sobre-headline em {
-  font-style: italic;
-  color: var(--primary);
-}
-
-.sobre-text {
-  font-size: 0.95rem;
-  color: #444;
-  line-height: 1.8;
-}
-
-.sobre-pillars {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 0.5rem;
-}
-
-.sobre-pillar {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem 1.2rem;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  transition: border-color 0.2s;
-}
-
-.sobre-pillar:hover {
-  border-color: rgba(144, 0, 255, 0.3);
-}
-
-.pillar-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--primary);
-  margin-top: 5px;
-  flex-shrink: 0;
-}
-
-.pillar-content strong {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--dark);
-  margin-bottom: 0.2rem;
-}
-
-.pillar-content span {
-  font-size: 0.8rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* Right side: valores + diferenciais */
-.sobre-right {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.sobre-block {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-h3.sobre-block-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--dark);
-}
-
-.sobre-block-text {
-  font-size: 0.88rem;
-  color: #555;
-  line-height: 1.75;
-}
-
-.sobre-valores-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.valor-chip {
-  padding: 0.4rem 1rem;
-  border: 1px solid rgba(144,0,255,0.2);
-  border-radius: 20px;
-  font-size: 0.78rem;
-  color: var(--primary);
-  font-weight: 500;
-  background: rgba(144,0,255,0.04);
-}
-
-.sobre-divider {
-  width: 100%;
-  height: 1px;
-  background: var(--border);
-}
-
-/* Publico box */
-.sobre-publico {
-  padding: 1.5rem;
-  background: var(--hero-bg);
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.publico-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(192, 102, 255, 0.7);
-}
-
-.publico-text {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.65;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-}
-
-/* ═══════════════════════════════════════
-   ESTRATÉGIA / PROCESSO
-═══════════════════════════════════════ */
-#estrategia {
-  background: var(--white);
-  padding: 6rem 2.5rem;
-}
-
-.estrategia-inner {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-.estrategia-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
+.sobre-left {}
 
-h2.estrategia-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.9rem, 3vw, 2.6rem);
-  font-weight: 600;
-  color: var(--dark);
-  line-height: 1.25;
-  margin-top: 1rem;
-}
+.sobre-right {}
 
-h2.estrategia-title em {
-  font-style: italic;
-  color: var(--primary);
-}
-
-.estrategia-sub {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: var(--muted);
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.7;
-}
-
-.processo-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+.sobre-visual {
   position: relative;
+  height: 380px;
 }
 
-.processo-steps::before {
-  content: '';
+.sobre-box-outer {
   position: absolute;
-  top: 28px;
-  left: calc(12.5% + 20px);
-  right: calc(12.5% + 20px);
-  height: 1px;
-  background: linear-gradient(90deg, rgba(144,0,255,0.3), rgba(144,0,255,0.6), rgba(144,0,255,0.3));
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 320px;
+  border: 1px solid rgba(144,0,255,0.2);
 }
 
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 1.5rem;
-  gap: 1rem;
-}
-
-.step-num {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 1px solid rgba(144,0,255,0.3);
-  background: var(--white);
+.sobre-box-inner {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 280px;
+  height: 320px;
+  background: linear-gradient(135deg, rgba(144,0,255,0.08) 0%, rgba(107,0,204,0.04) 100%);
+  border: 1px solid rgba(144,0,255,0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
+}
+
+.sobre-box-inner svg {
+  width: 100px;
+  height: auto;
+}
+
+.sobre-accent-line {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(144,0,255,0.4));
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.valor-item {
+  padding: 1.2rem;
+  background: var(--white);
+  border: 1px solid rgba(144,0,255,0.1);
+}
+
+.valor-label {
+  font-size: 0.7rem;
   font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--primary);
-  position: relative;
-  z-index: 1;
+  display: block;
+  margin-bottom: 0.4rem;
 }
 
-.step-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--dark);
-  line-height: 1.3;
+.valor-text {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.55;
 }
 
-.step-desc {
-  font-size: 0.78rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* ═══════════════════════════════════════
-   CTA FINAL
-═══════════════════════════════════════ */
-#cta-final {
+/* =====================
+   DIFERENCIAIS
+===================== */
+#diferenciais {
   background: var(--hero-bg);
-  padding: 7rem 2.5rem;
+  padding: 7rem 4rem;
   position: relative;
   overflow: hidden;
 }
 
-.cta-bg-geo-1 {
+.dif-geo {
   position: absolute;
-  bottom: -100px;
-  right: -100px;
-  width: 400px;
-  height: 400px;
-  border: 1px solid rgba(144, 0, 255, 0.1);
+  top: -80px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
+  border: 1px solid rgba(144,0,255,0.12);
   pointer-events: none;
 }
 
-.cta-bg-geo-2 {
+.dif-geo2 {
   position: absolute;
-  top: -60px;
-  left: 10%;
-  width: 200px;
-  height: 200px;
-  border: 1px solid rgba(144, 0, 255, 0.07);
+  bottom: -60px;
+  left: -60px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
+  border: 1px solid rgba(144,0,255,0.1);
+  pointer-events: none;
+}
+
+.diferenciais-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.dif-left .section-label {
+  color: rgba(144,0,255,0.8);
+}
+
+.dif-left .section-label::before {
+  background: rgba(144,0,255,0.6);
+}
+
+.dif-left .section-headline {
+  color: var(--white);
+}
+
+.dif-left .section-desc {
+  color: rgba(255,255,255,0.5);
+}
+
+.dif-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.dif-list li {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(144,0,255,0.12);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.dif-list li:first-child {
+  border-top: 1px solid rgba(144,0,255,0.12);
+}
+
+.dif-marker {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 0.55rem;
+  flex-shrink: 0;
+}
+
+.dif-content-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.dif-content-body {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+}
+
+/* =====================
+   CTA FINAL
+===================== */
+#cta-final {
+  background: linear-gradient(135deg, #0d0520 0%, #1a0040 50%, #0d0520 100%);
+  padding: 7rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-geo-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(144,0,255,0.1);
+  pointer-events: none;
+}
+
+.cta-geo-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  border: 1px solid rgba(144,0,255,0.15);
   pointer-events: none;
 }
 
 .cta-inner {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
   position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-h2.cta-headline {
+.cta-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.cta-headline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 600;
-  line-height: 1.2;
   color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
 }
 
-h2.cta-headline em {
+.cta-headline em {
   font-style: italic;
-  color: #c066ff;
+  color: var(--primary);
 }
 
 .cta-sub {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 2.5rem;
   line-height: 1.7;
-  max-width: 500px;
 }
 
-.cta-actions {
+.cta-buttons {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 
-.btn-wa {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: var(--primary);
-  color: #fff;
-  text-decoration: none;
-  padding: 1rem 2.2rem;
-  border-radius: 4px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.03em;
-  transition: background 0.2s;
-}
-
-.btn-wa:hover {
-  background: var(--primary-dark);
-}
-
-.btn-email {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: transparent;
-  color: rgba(255,255,255,0.75);
-  text-decoration: none;
-  padding: 1rem 2.2rem;
-  border-radius: 4px;
-  font-weight: 400;
-  font-size: 0.9rem;
-  letter-spacing: 0.03em;
-  border: 1px solid rgba(255,255,255,0.18);
-  transition: border-color 0.2s, color 0.2s;
-}
-
-.btn-email:hover {
-  border-color: rgba(192, 102, 255, 0.4);
-  color: #c066ff;
-}
-
-/* ═══════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════ */
-footer {
-  background: #080315;
-  padding: 4rem 2.5rem 2rem;
-  border-top: 1px solid rgba(144, 0, 255, 0.15);
-}
-
-.footer-inner {
-  max-width: 1200px;
+.cta-disclaimer {
+  max-width: 680px;
   margin: 0 auto;
+  padding: 1.2rem 2rem;
+  border: 1px solid rgba(144, 0, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(144, 0, 255, 0.05);
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
 }
 
-.footer-grid {
+/* =====================
+   FOOTER
+===================== */
+footer {
+  background: #070212;
+  padding: 4rem 4rem 2.5rem;
+  border-top: 1px solid rgba(144,0,255,0.1);
+}
+
+.footer-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto 3rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(144,0,255,0.08);
 }
 
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.footer-logo svg {
-  width: 150px;
-  height: auto;
-  filter: brightness(1.2);
+.footer-brand svg {
+  height: 50px;
+  width: auto;
+  margin-bottom: 1.2rem;
 }
 
 .footer-tagline {
   font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.45);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.4);
   line-height: 1.6;
-  max-width: 280px;
-}
-
-.footer-col-title {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 1.2rem;
-}
-
-.footer-nav {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.footer-nav a {
-  color: rgba(255,255,255,0.55);
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color 0.2s;
-}
-
-.footer-nav a:hover {
-  color: #c066ff;
-}
-
-.footer-contact-items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  max-width: 260px;
 }
 
 .footer-contact-item {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.5rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.footer-contact-label {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+.footer-contact-item a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+}
+
+.footer-contact-item a:hover {
+  color: var(--primary);
+}
+
+.footer-col-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.3);
+  margin-bottom: 1.2rem;
 }
 
-.footer-contact-value {
-  color: rgba(255,255,255,0.65);
-  font-size: 0.82rem;
+.footer-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-nav-list a {
   text-decoration: none;
-  transition: color 0.2s;
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.03em;
 }
 
-a.footer-contact-value:hover {
-  color: #c066ff;
-}
-
-.footer-disclaimer {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 5px;
-  padding: 1.2rem 1.5rem;
-  color: rgba(255,255,255,0.4);
-  font-size: 0.75rem;
-  line-height: 1.7;
-  margin-bottom: 2rem;
+.footer-nav-list a:hover {
+  color: var(--primary);
 }
 
 .footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-disclaimer {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(144,0,255,0.1);
+  border-radius: 6px;
+  background: rgba(144,0,255,0.03);
+}
+
+.footer-copy {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.footer-copy {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.3);
-}
-
-.footer-awt {
-  font-size: 0.72rem;
-  color: rgba(144, 0, 255, 0.5);
-  letter-spacing: 0.08em;
-}
-
-/* ═══════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════ */
-@media (max-width: 1024px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    text-align: left;
-  }
-
-  .hero-right {
-    display: none;
-  }
-
-  .sobre-inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
-
-  .processo-steps {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .processo-steps::before {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
+/* =====================
+   MOBILE
+===================== */
+@media (max-width: 900px) {
   nav {
     padding: 1rem 1.5rem;
   }
@@ -1178,74 +867,101 @@ a.footer-contact-value:hover {
     display: none;
   }
 
-  .nav-mobile-toggle {
-    display: flex;
+  #hero {
+    padding: 6rem 1.5rem 4rem;
   }
 
-  .hero-inner {
-    padding: 3rem 1.5rem;
-  }
-
-  .hero-disclaimer {
-    margin: 0 1.5rem 2rem;
-    padding: 1rem 1.2rem;
+  .hero-geo-circle-1,
+  .hero-geo-circle-2,
+  .hero-geo-diamond,
+  .hero-geo-line-v,
+  .hero-geo-line-v2 {
+    display: none;
   }
 
   #trust-bar {
     padding: 2rem 1.5rem;
   }
 
-  .trust-bar-inner {
+  .trust-item {
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 1rem 0;
+  }
+
+  .trust-item:last-child {
+    border-bottom: none;
+  }
+
+  #especialidades,
+  #sobre,
+  #diferenciais,
+  #cta-final {
+    padding: 5rem 1.5rem;
+  }
+
+  .sobre-layout {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 3rem;
   }
 
-  #especialidades, #sobre, #estrategia, #cta-final {
-    padding: 4rem 1.5rem;
+  .sobre-visual {
+    height: 260px;
   }
 
-  .especialidades-header {
-    flex-direction: column;
-    align-items: flex-start;
+  .sobre-box-outer {
+    width: 220px;
+    height: 240px;
   }
 
-  .especialidades-header-right {
-    max-width: 100%;
+  .sobre-box-inner {
+    width: 220px;
+    height: 240px;
+    top: 25px;
+    left: 25px;
   }
 
-  .processo-steps {
+  .diferenciais-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
   footer {
     padding: 3rem 1.5rem 2rem;
   }
 
-  .footer-grid {
+  .footer-copy {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .valores-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-headline {
+    font-size: 2.2rem;
   }
 
-  .footer-bottom {
+  .hero-ctas {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
-  .cta-actions {
+  .cta-buttons {
     flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    max-width: 320px;
+    align-items: center;
   }
 
-  .btn-wa, .btn-email {
-    justify-content: center;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: flex-start;
+  .especialidades-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -1253,328 +969,332 @@ a.footer-contact-value:hover {
 <body>
 
 <!-- NAV -->
-<nav aria-label="Navegação principal">
+<nav>
   <div class="nav-logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" aria-label="TEs Multi Family Office">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90">
       <defs>
-        <linearGradient id="nav-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#c066ff;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#9933ff;stop-opacity:1" />
-        </linearGradient>
-        <linearGradient id="nav-grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#9000FF;stop-opacity:0.25" />
-          <stop offset="100%" style="stop-color:#9000FF;stop-opacity:0.1" />
+        <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#9000FF;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#6B00CC;stop-opacity:1" />
         </linearGradient>
       </defs>
       <g transform="translate(12, 10)">
-        <polygon points="34,2 58,16 58,44 34,58 10,44 10,16" fill="url(#nav-grad2)" stroke="url(#nav-grad1)" stroke-width="1.8"/>
-        <line x1="20" y1="22" x2="48" y2="22" stroke="#c066ff" stroke-width="2.2" stroke-linecap="round"/>
-        <line x1="34" y1="22" x2="34" y2="42" stroke="#c066ff" stroke-width="2.2" stroke-linecap="round"/>
-        <rect x="30.5" y="34" width="7" height="7" rx="1" fill="none" stroke="#c066ff" stroke-width="1.2" transform="rotate(45 34 37.5)" opacity="0.5"/>
+        <polygon points="34,2 58,16 58,44 34,58 10,44 10,16" fill="none" stroke="url(#primaryGrad)" stroke-width="2.2"/>
+        <line x1="34" y1="14" x2="34" y2="46" stroke="#9000FF" stroke-width="1.2" opacity="0.35"/>
+        <line x1="18" y1="24" x2="50" y2="24" stroke="#9000FF" stroke-width="1.2" opacity="0.35"/>
+        <line x1="34" y1="17" x2="34" y2="43" stroke="url(#primaryGrad)" stroke-width="2.6" stroke-linecap="round"/>
+        <line x1="24" y1="22" x2="44" y2="22" stroke="url(#primaryGrad)" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="34" cy="47" r="1.8" fill="#9000FF"/>
       </g>
-      <text x="88" y="52" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" fill="#c066ff" letter-spacing="1.5">TEs</text>
-      <line x1="88" y1="60" x2="230" y2="60" stroke="#c066ff" stroke-width="0.6" opacity="0.35"/>
-      <text x="89" y="75" font-family="Georgia, 'Times New Roman', serif" font-size="11" font-weight="400" fill="#c066ff" letter-spacing="3.5" opacity="0.75">MULTI FAMILY OFFICE</text>
+      <text x="82" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" letter-spacing="1.5" fill="#9000FF">TEs</text>
+      <text x="84" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="400" letter-spacing="5.5" fill="#9000FF" opacity="0.75">WEALTH</text>
+      <line x1="84" y1="68" x2="210" y2="68" stroke="#9000FF" stroke-width="0.6" opacity="0.3"/>
     </svg>
   </div>
   <ul class="nav-links">
     <li><a href="#especialidades">Especialidades</a></li>
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#estrategia">Nossa Abordagem</a></li>
-    <li><a href="#cta-final" class="nav-cta">Agende uma conversa</a></li>
+    <li><a href="#sobre">O Escritório</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="https://wa.me/5512311123123" class="nav-cta">Agende uma conversa</a></li>
   </ul>
-  <button class="nav-mobile-toggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
 <!-- HERO -->
-<section id="hero" aria-label="Hero principal">
-
-  <!-- Background geometry -->
-  <div class="hero-geo hero-geo-1" aria-hidden="true"></div>
-  <div class="hero-geo hero-geo-2" aria-hidden="true"></div>
-  <div class="hero-geo hero-geo-3" aria-hidden="true"></div>
-  <div class="hero-geo hero-geo-4" aria-hidden="true"></div>
-  <div class="hero-blob" aria-hidden="true"></div>
-
-  <div class="hero-inner">
-    <div class="hero-left">
-      <span class="hero-eyebrow">Multi Family Office Independente</span>
-
-      <h1 class="hero-headline">
-        dasda — planejamento<br>
-        para <em>cada geração</em>
-      </h1>
-
-      <p class="hero-sub">
-        asdasda. Estruturamos seu patrimônio com método, independência e foco total na sua família.
-      </p>
-
-      <div class="hero-actions">
-        <a href="https://wa.me/5512311123123" class="btn-primary" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.86L.057 23.428a.5.5 0 0 0 .515.572l5.701-1.455A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 0 1-5.032-1.385l-.36-.214-3.733.953.986-3.63-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-          Converse sobre seu planejamento
-        </a>
-        <a href="#sobre" class="btn-secondary">
-          Conheça o TEs
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-right" aria-hidden="true">
-      <div class="hero-panel">
-        <div class="hero-panel-box"></div>
-        <div class="hero-panel-box-inner"></div>
-        <div class="hero-panel-content">
-          <div class="hero-panel-label">TEs · Independência</div>
-
-          <div class="hero-panel-stat">
-            <div class="hero-panel-stat-value">100%</div>
-            <div class="hero-panel-stat-label">Independente de bancos e corretoras</div>
-          </div>
-
-          <div class="hero-panel-divider"></div>
-
-          <div class="hero-panel-stat">
-            <div class="hero-panel-stat-value">Uma</div>
-            <div class="hero-panel-stat-label">única estratégia de planejamento para toda a família</div>
-          </div>
-
-          <p class="hero-panel-quote">"dasda"</p>
-        </div>
-      </div>
-    </div>
+<section id="hero">
+  <div class="hero-geo">
+    <div class="hero-geo-circle-1"></div>
+    <div class="hero-geo-circle-2"></div>
+    <div class="hero-geo-circle-3"></div>
+    <div class="hero-geo-line-v"></div>
+    <div class="hero-geo-line-v2"></div>
+    <div class="hero-geo-diamond"></div>
   </div>
 
-  <!-- Hero disclaimer -->
-  <div class="hero-disclaimer" role="note">
-    <strong style="display:block; color:rgba(255,255,255,0.65); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem;">Informação Regulatória</strong>
+  <p class="hero-label">Multi Family Office Independente</p>
+
+  <h1 class="hero-headline">
+    Patrimônio estruturado para atravessar <em>gerações.</em>
+  </h1>
+
+  <p class="hero-sub">
+    dasda — organizamos, planejamos e consolidamos o que você construiu, com uma única estratégia de planejamento para toda a família.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="https://wa.me/5512311123123" class="btn-primary">Converse sobre seu planejamento</a>
+    <a href="#especialidades" class="btn-secondary">Conhecer as especialidades</a>
+  </div>
+
+  <div class="hero-disclaimer">
     TEs integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.
   </div>
-
 </section>
 
 <!-- TRUST BAR -->
-<section id="trust-bar" aria-label="Diferenciais rápidos">
-  <div class="trust-bar-inner">
+<section id="trust-bar">
+  <div class="trust-inner">
     <div class="trust-item">
-      <div class="trust-icon" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9000FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
+      <div class="trust-icon">✓</div>
       <div class="trust-text">
-        <strong>100% independente</strong>
-        <span>Sem vínculo com bancos, corretoras ou produtos de terceiros.</span>
+        <strong>Independência</strong>
+        Sem conflito de interesse na estruturação patrimonial
       </div>
     </div>
     <div class="trust-item">
-      <div class="trust-icon" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9000FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-      </div>
+      <div class="trust-icon">✓</div>
       <div class="trust-text">
-        <strong>Uma única estratégia de planejamento</strong>
-        <span>Visão consolidada e coordenada de todo o patrimônio familiar.</span>
+        <strong>Planejamento Integrado</strong>
+        Uma única estratégia para toda a família
       </div>
     </div>
     <div class="trust-item">
-      <div class="trust-icon" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9000FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
+      <div class="trust-icon">✓</div>
       <div class="trust-text">
-        <strong>Dedicação à família</strong>
-        <span>Planejamento personalizado para cada geração e cada objetivo.</span>
+        <strong>AWT Group</strong>
+        Ecossistema com supervisão regulatória CVM
       </div>
     </div>
   </div>
 </section>
 
 <!-- ESPECIALIDADES -->
-<section id="especialidades" aria-label="Especialidades">
-  <div class="especialidades-inner">
-    <div class="especialidades-header">
-      <div class="especialidades-header-left">
-        <div class="section-label accent">Especialidades</div>
-        <h2 class="section-headline">
-          O que organizamos<br>
-          para <em>você e sua família</em>
-        </h2>
-      </div>
-      <div class="especialidades-header-right">
-        Cada família tem uma história única. Nossas especialidades foram construídas para acompanhar a complexidade do patrimônio de famílias como a sua, com método e atenção ao detalhe.
-      </div>
-    </div>
+<section id="especialidades">
+  <div class="section-inner">
+    <p class="section-label">Especialidades</p>
+    <h2 class="section-headline">O que organizamos <em>para você.</em></h2>
+    <p class="section-desc">
+      Cada área de atuação é planejada com precisão — do planejamento sucessório ao acompanhamento patrimonial — para que nada fique fora do mapa.
+    </p>
 
-    <div class="esp-grid">
-      <!-- Card 1: Sucessório (da lista do usuário) -->
-      <div class="esp-card">
-        <div class="esp-card-number">01</div>
-        <div class="esp-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#9000FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <h3 class="esp-title">Planejamento Sucessório</h3>
-        <p class="esp-desc">Estruturamos a transmissão do patrimônio entre gerações com clareza, proteção e alinhamento familiar — garantindo continuidade e reduzindo conflitos futuros.</p>
-        <span class="esp-tag">Sucessório</span>
+    <div class="especialidades-grid">
+
+      <div class="espec-card">
+        <span class="espec-num">01</span>
+        <h3 class="espec-title">Planejamento Sucessório</h3>
+        <p class="espec-body">
+          Estruturamos a transferência do patrimônio familiar com clareza jurídica, mapeando cada etapa para que a continuidade seja protegida com antecedência e sem imprevistos.
+        </p>
       </div>
 
-      <!-- Card 2: dasda (da lista do usuário) -->
-      <div class="esp-card">
-        <div class="esp-card-number">02</div>
-        <div class="esp-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#9000FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
-        <h3 class="esp-title">dasda</h3>
-        <p class="esp-desc">Mapeamos, consolidamos e acompanhamos cada aspecto do seu patrimônio, construindo uma visão completa e organizada da sua situação patrimonial.</p>
-        <span class="esp-tag">Planejamento</span>
+      <div class="espec-card">
+        <span class="espec-num">02</span>
+        <h3 class="espec-title">dasda</h3>
+        <p class="espec-body">
+          Organizamos e consolidamos a estrutura patrimonial para que você tenha visibilidade completa do que foi construído, simplificando decisões e acompanhando cada etapa com método.
+        </p>
       </div>
 
-      <!-- Card 3: Patrimônio Consolidado -->
-      <div class="esp-card">
-        <div class="esp-card-number">03</div>
-        <div class="esp-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#9000FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <h3 class="esp-title">Patrimônio Consolidado</h3>
-        <p class="esp-desc">Simplificamos a complexidade de múltiplas classes patrimoniais em uma única visão estruturada, conectando todos os pontos do seu ecossistema financeiro.</p>
-        <span class="esp-tag">Consolidação</span>
+      <div class="espec-card">
+        <span class="espec-num">03</span>
+        <h3 class="espec-title">Consolidação Patrimonial</h3>
+        <p class="espec-body">
+          Mapeamos e consolidamos todos os componentes do patrimônio em uma visão única, conectando estruturas, bens e familiares em um plano coerente.
+        </p>
       </div>
+
+      <div class="espec-card">
+        <span class="espec-num">04</span>
+        <h3 class="espec-title">Governança Familiar</h3>
+        <p class="espec-body">
+          Planejamos as regras e processos que organizam as relações entre família e patrimônio, construindo acordos duradouros para as próximas gerações.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- SOBRE -->
-<section id="sobre" aria-label="Sobre o TEs">
-  <div class="sobre-inner">
+<section id="sobre">
+  <div class="sobre-layout">
     <div class="sobre-left">
-      <div class="section-label">Quem somos</div>
-      <h2 class="sobre-headline">
-        Construído para<br>
-        <em>famílias que exigem</em><br>
-        mais do que o óbvio
-      </h2>
-      <p class="sobre-text">
-        asdasda. No TEs, acreditamos que cada família merece uma abordagem construída do zero — não um produto de prateleira.
+      <p class="section-label">O Escritório</p>
+      <h2 class="section-headline">Construído com propósito, <em>orientado por valores.</em></h2>
+      <p class="section-desc" style="margin-bottom:1.5rem;">
+        asdasda — a visão que nos orienta é simples: o planejamento patrimonial deve servir à família, não ao contrário.
       </p>
-      <p class="sobre-text">
-        Nosso trabalho começa pelo entendimento profundo da sua história, dos seus objetivos e das gerações que você deseja proteger. A partir daí, planejamos, estruturamos e acompanhamos cada decisão com método e dedicação.
+      <p class="section-desc" style="margin-bottom:2rem;">
+        dasdasd — nossa missão é organizar, estruturar e acompanhar o que cada família construiu, com atenção, método e independência.
       </p>
 
-      <div class="sobre-pillars">
-        <div class="sobre-pillar">
-          <div class="pillar-dot"></div>
-          <div class="pillar-content">
-            <strong>Visão</strong>
-            <span>asdasda</span>
-          </div>
+      <div class="valores-grid">
+        <div class="valor-item">
+          <span class="valor-label">Visão</span>
+          <p class="valor-text">asdasda</p>
         </div>
-        <div class="sobre-pillar">
-          <div class="pillar-dot"></div>
-          <div class="pillar-content">
-            <strong>Missão</strong>
-            <span>dasdasd</span>
-          </div>
+        <div class="valor-item">
+          <span class="valor-label">Missão</span>
+          <p class="valor-text">dasdasd</p>
         </div>
-        <div class="sobre-pillar">
-          <div class="pillar-dot"></div>
-          <div class="pillar-content">
-            <strong>Diferenciais</strong>
-            <span>dasda</span>
-          </div>
+        <div class="valor-item">
+          <span class="valor-label">Valores</span>
+          <p class="valor-text">dsaads</p>
+        </div>
+        <div class="valor-item">
+          <span class="valor-label">Público</span>
+          <p class="valor-text">dsadsdas</p>
         </div>
       </div>
     </div>
 
     <div class="sobre-right">
-      <div class="sobre-block">
-        <div class="section-label">Nossos valores</div>
-        <h3 class="sobre-block-title">O que nos orienta em cada decisão</h3>
-        <p class="sobre-block-text">dsaads. Esses princípios guiam cada conversa, cada estrutura e cada recomendação que fazemos.</p>
-        <div class="sobre-valores-list">
-          <span class="valor-chip">Independência</span>
-          <span class="valor-chip">Transparência</span>
-          <span class="valor-chip">Continuidade</span>
-          <span class="valor-chip">Método</span>
-          <span class="valor-chip">Confiança</span>
+      <div class="sobre-visual">
+        <div class="sobre-box-outer"></div>
+        <div class="sobre-box-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90">
+            <defs>
+              <linearGradient id="primaryGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#9000FF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#6B00CC;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <g transform="translate(12, 10)">
+              <polygon points="34,2 58,16 58,44 34,58 10,44 10,16" fill="none" stroke="url(#primaryGrad2)" stroke-width="2.2"/>
+              <line x1="34" y1="14" x2="34" y2="46" stroke="#9000FF" stroke-width="1.2" opacity="0.35"/>
+              <line x1="18" y1="24" x2="50" y2="24" stroke="#9000FF" stroke-width="1.2" opacity="0.35"/>
+              <line x1="34" y1="17" x2="34" y2="43" stroke="url(#primaryGrad2)" stroke-width="2.6" stroke-linecap="round"/>
+              <line x1="24" y1="22" x2="44" y2="22" stroke="url(#primaryGrad2)" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="34" cy="47" r="1.8" fill="#9000FF"/>
+            </g>
+            <text x="82" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" letter-spacing="1.5" fill="#9000FF">TEs</text>
+            <text x="84" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="400" letter-spacing="5.5" fill="#9000FF" opacity="0.75">WEALTH</text>
+            <line x1="84" y1="68" x2="210" y2="68" stroke="#9000FF" stroke-width="0.6" opacity="0.3"/>
+          </svg>
         </div>
-      </div>
-
-      <div class="sobre-divider"></div>
-
-      <div class="sobre-block">
-        <div class="section-label">Para quem</div>
-        <div class="sobre-publico">
-          <div class="publico-label">Público que atendemos</div>
-          <p class="publico-text">"dsadsdas — famílias que buscam mais do que produtos financeiros; buscam uma parceria de longo prazo."</p>
-        </div>
-      </div>
-
-      <div class="sobre-divider"></div>
-
-      <!-- AWT Group affiliation -->
-      <div class="sobre-block">
-        <div class="section-label">Ecossistema</div>
-        <h3 class="sobre-block-title">Parte do AWT Group</h3>
-        <p class="sobre-block-text">
-          O TEs integra o ecossistema AWT Group, o que nos permite oferecer acesso a um robusto conjunto de ferramentas, parcerias e expertise sem abrir mão da nossa independência e do foco exclusivo nos interesses das famílias que atendemos.
-        </p>
+        <div class="sobre-accent-line"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ESTRATÉGIA / PROCESSO -->
-<section id="estrategia" aria-label="Nossa abordagem">
-  <div class="estrategia-inner">
-    <div class="estrategia-header">
-      <div class="section-label accent" style="justify-content:center;">Nossa abordagem</div>
-      <h2 class="estrategia-title">
-        Uma única estratégia de planejamento —<br>
-        <em>construída para durar</em>
-      </h2>
-      <p class="estrategia-sub">
-        Não entregamos diagnósticos genéricos. Organizamos um processo claro, em etapas, para que você saiba exatamente onde está e para onde seu patrimônio vai.
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="dif-geo"></div>
+  <div class="dif-geo2"></div>
+
+  <div class="diferenciais-layout">
+    <div class="dif-left">
+      <p class="section-label">Diferenciais</p>
+      <h2 class="section-headline" style="color:#fff;">Por que a <em>TEs</em></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.5);">
+        dasda — o que nos separa de escritórios convencionais é a forma como organizamos, planejamos e acompanhamos cada família.
       </p>
     </div>
 
-    <div class="processo-steps">
-      <div class="step">
-        <div class="step-num">I</div>
-        <div class="step-title">Mapear</div>
-        <p class="step-desc">Entendemos sua situação patrimonial completa, sua família, seus objetivos e o que é mais importante para você.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">II</div>
-        <div class="step-title">Estruturar</div>
-        <p class="step-desc">Organizamos uma estratégia de planejamento personalizada, conectando todas as dimensões do seu patrimônio.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">III</div>
-        <div class="step-title">Planejar</div>
-        <p class="step-desc">Construímos o plano de ação com etapas claras, responsabilidades definidas e metas alinhadas à sua visão de futuro.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">IV</div>
-        <div class="step-title">Acompanhar</div>
-        <p class="step-desc">Estamos ao lado da sua família de forma contínua, simplificando a complexidade e ajustando a rota quando necessário.</p>
-      </div>
+    <div class="dif-right">
+      <ul class="dif-list">
+        <li>
+          <div class="dif-marker"></div>
+          <div>
+            <p class="dif-content-title">Uma única estratégia de planejamento</p>
+            <p class="dif-content-body">Consolidamos todas as frentes em um plano coerente, sem fragmentação entre diferentes assessores sem comunicação entre si.</p>
+          </div>
+        </li>
+        <li>
+          <div class="dif-marker"></div>
+          <div>
+            <p class="dif-content-title">Independência estrutural</p>
+            <p class="dif-content-body">Não temos vínculo comercial com produtos financeiros. Organizamos o planejamento com foco exclusivo na família, sem conflito de interesse.</p>
+          </div>
+        </li>
+        <li>
+          <div class="dif-marker"></div>
+          <div>
+            <p class="dif-content-title">Visão intergeracional</p>
+            <p class="dif-content-body">Mapeamos o patrimônio pensando nas próximas décadas — estruturando sucessão, governança e continuidade desde o início do relacionamento.</p>
+          </div>
+        </li>
+        <li>
+          <div class="dif-marker"></div>
+          <div>
+            <p class="dif-content-title">dasda</p>
+            <p class="dif-content-body">Acompanhamos de perto cada etapa, conectando família, patrimônio e planejamento em um único ponto de referência.</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- CTA FINAL -->
-<section id="cta-final" aria-label="Contato">
-  <div class="cta-bg-geo-1" aria-hidden="true"></div>
-  <div class="cta-bg-geo-2" aria-hidden="true"></div>
+<section id="cta-final">
+  <div class="cta-geo-1"></div>
+  <div class="cta-geo-2"></div>
 
   <div class="cta-inner">
-    <div class="section-label light" style="justify-content:center;">Próximo passo</div>
-    <h2 class="cta-headline">
-      Organize seu patrimônio<br>
-      com quem <em>entende sua família</em>
-    </h2>
+    <span class="cta-label">Dê o próximo passo</span>
+    <h2 class="cta-headline">O momento certo para <em>organizar</em> é agora.</h2>
     <p class="cta-sub">
-      Uma conversa sem compromisso, sem produtos pré-definidos. Apenas escuta, método e clareza sobre como podemos ajudar.
+      Converse com nosso time sobre seu planejamento patrimonial. Uma conversa, sem compromisso, para entender como podemos estruturar o que você construiu.
     </p>
-    <div class="cta-actions">
-      <a href="https://wa.me/5512311123123" class="btn-wa" target="_blank" rel="noopener">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.86L.057 23.428a.5.5 0 0 0 .515.572l5.701-1.455A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 0 1-5.032-1.385l-.36-.214-3.733.953.986-3.63-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57
+    <div class="cta-buttons">
+      <a href="https://wa.me/5512311123123" class="btn-primary">Converse sobre seu planejamento</a>
+      <a href="mailto:teas@mgma.com" class="btn-secondary">Enviar um e-mail</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90">
+        <defs>
+          <linearGradient id="primaryGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#9000FF;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#6B00CC;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <g transform="translate(12, 10)">
+          <polygon points="34,2 58,16 58,44 34,58 10,44 10,16" fill="none" stroke="url(#primaryGrad3)" stroke-width="2.2"/>
+          <line x1="34" y1="14" x2="34" y2="46" stroke="#9000FF" stroke-width="1.2" opacity="0.35"/>
+          <line x1="18" y1="24" x2="50" y2="24" stroke="#9000FF" stroke-width="1.2" opacity="0.35"/>
+          <line x1="34" y1="17" x2="34" y2="43" stroke="url(#primaryGrad3)" stroke-width="2.6" stroke-linecap="round"/>
+          <line x1="24" y1="22" x2="44" y2="22" stroke="url(#primaryGrad3)" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="34" cy="47" r="1.8" fill="#9000FF"/>
+        </g>
+        <text x="82" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" letter-spacing="1.5" fill="#9000FF">TEs</text>
+        <text x="84" y="62" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="400" letter-spacing="5.5" fill="#9000FF" opacity="0.75">WEALTH</text>
+        <line x1="84" y1="68" x2="210" y2="68" stroke="#9000FF" stroke-width="0.6" opacity="0.3"/>
+      </svg>
+      <p class="footer-tagline">dasda</p>
+      <p class="footer-contact-item">
+        <a href="https://wa.me/5512311123123">+55 (12) 3 1112-3123</a>
+      </p>
+      <p class="footer-contact-item">
+        <a href="mailto:teas@mgma.com">teas@mgma.com</a>
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-col-title">Navegação</p>
+      <ul class="footer-nav-list">
+        <li><a href="#especialidades">Especialidades</a></li>
+        <li><a href="#sobre">O Escritório</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="https://wa.me/5512311123123">Agende uma conversa</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <p class="footer-col-title">Contato</p>
+      <ul class="footer-nav-list">
+        <li><a href="https://wa.me/5512311123123">WhatsApp</a></li>
+        <li><a href="mailto:teas@mgma.com">E-mail</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-disclaimer">
+      TEs integra o ecossistema AWT Group por meio do vínculo de seus profissionais com a AWT Independence S.A. A gestão profissional de carteiras é realizada pela AWT Consultoria e Administração de Valores Mobiliários Ltda., CNPJ 35.137.445/0001-00, registrada perante a CVM.
+    </div>
+    <div class="footer-copy">
+      <span>© 2025 TEs Wealth. Todos os direitos reservados.</span>
+      <span>Multi Family Office Independente · AWT Group</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,53 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90">
   <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#9000FF;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#6000CC;stop-opacity:1" />
-    </linearGradient>
-    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#9000FF;stop-opacity:0.15" />
-      <stop offset="100%" style="stop-color:#9000FF;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#6B00CC;stop-opacity:1" />
     </linearGradient>
   </defs>
 
-  <!-- Ícone geométrico: hexágono estilizado com monograma T -->
+  <!-- Icon: Geometric diamond/rhombus with inner structure representing wealth management -->
   <g transform="translate(12, 10)">
-    <!-- Hexágono externo preenchido suave -->
-    <polygon points="34,2 58,16 58,44 34,58 10,44 10,16" fill="url(#grad2)" stroke="url(#grad1)" stroke-width="1.8"/>
-
-    <!-- Linha decorativa interna superior -->
-    <line x1="20" y1="22" x2="48" y2="22" stroke="#9000FF" stroke-width="2.2" stroke-linecap="round"/>
-
-    <!-- Haste vertical do T -->
-    <line x1="34" y1="22" x2="34" y2="42" stroke="#9000FF" stroke-width="2.2" stroke-linecap="round"/>
-
-    <!-- Detalhe: pequeno losango central decorativo -->
-    <rect x="30.5" y="34" width="7" height="7" rx="1" fill="none" stroke="#9000FF" stroke-width="1.2" transform="rotate(45 34 37.5)" opacity="0.5"/>
+    <!-- Outer hexagon/diamond shape -->
+    <polygon points="34,2 58,16 58,44 34,58 10,44 10,16" fill="none" stroke="url(#primaryGrad)" stroke-width="2.2"/>
+    <!-- Inner accent lines suggesting upward growth / capital -->
+    <line x1="34" y1="14" x2="34" y2="46" stroke="#9000FF" stroke-width="1.2" opacity="0.35"/>
+    <line x1="18" y1="24" x2="50" y2="24" stroke="#9000FF" stroke-width="1.2" opacity="0.35"/>
+    <!-- Central monogram T stylized -->
+    <line x1="34" y1="17" x2="34" y2="43" stroke="url(#primaryGrad)" stroke-width="2.6" stroke-linecap="round"/>
+    <line x1="24" y1="22" x2="44" y2="22" stroke="url(#primaryGrad)" stroke-width="2.6" stroke-linecap="round"/>
+    <!-- Small accent dot bottom -->
+    <circle cx="34" cy="47" r="1.8" fill="#9000FF"/>
   </g>
 
-  <!-- Nome principal "TEs" -->
+  <!-- Name: TEs -->
   <text
-    x="88"
-    y="52"
+    x="82"
+    y="43"
     font-family="Georgia, 'Times New Roman', serif"
-    font-size="38"
+    font-size="36"
     font-weight="700"
-    fill="#9000FF"
     letter-spacing="1.5"
-  >TEs</text>
+    fill="#9000FF">TEs</text>
 
-  <!-- Linha separadora elegante -->
-  <line x1="88" y1="60" x2="230" y2="60" stroke="#9000FF" stroke-width="0.6" opacity="0.35"/>
-
-  <!-- Subtítulo -->
+  <!-- Subtitle: Wealth -->
   <text
-    x="89"
-    y="75"
+    x="84"
+    y="62"
     font-family="Georgia, 'Times New Roman', serif"
-    font-size="11"
+    font-size="13"
     font-weight="400"
+    letter-spacing="5.5"
     fill="#9000FF"
-    letter-spacing="3.5"
-    opacity="0.75"
-  >MULTI FAMILY OFFICE</text>
+    opacity="0.75">WEALTH</text>
+
+  <!-- Thin separator line under subtitle -->
+  <line x1="84" y1="68" x2="210" y2="68" stroke="#9000FF" stroke-width="0.6" opacity="0.3"/>
 </svg>
